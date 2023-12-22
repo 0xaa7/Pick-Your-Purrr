@@ -57,7 +57,7 @@ requestAnimationFrame(raf)
         <Column images={[images[6],images[7],images[8]]} y={y3} />
         <Column images={[images[9],images[10],images[11]]} y={y4} />
         <span>
-          <Link to="/gallerypage" target="_blank">
+          <Link to="/gallerypage">
             <button>Gallery</button>
           </Link></span>
       </div>

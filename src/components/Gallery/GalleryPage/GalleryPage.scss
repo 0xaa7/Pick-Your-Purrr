@@ -1,8 +1,25 @@
-.gallery-page{
-  width: 100vw;
-  height: 100vh;
-  font-size: 200px;
-  
-  color: bisque;
+.gallery-page {
+  // Add any specific styling for your gallery page here
+}
 
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 16px;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.image {
+  width: 100%;
+  height: auto;
+  display: block;
 }

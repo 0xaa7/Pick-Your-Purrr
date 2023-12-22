@@ -1,0 +1,18 @@
+.nav-links {
+  display: flex;
+  flex-direction: row;
+  gap: 22px;
+
+  a {
+    color: #4b1794;
+    font-size: 20px;
+
+  }
+
+  a:hover {
+    color: #4b1794;
+    text-shadow: #eb4687 6px 6px 12px,
+      #eb4687 6px 6px 12px,
+      #eb4687 6px 6px 12px;
+  }
+}

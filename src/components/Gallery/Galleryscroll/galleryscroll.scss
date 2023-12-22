@@ -1,0 +1,108 @@
+
+
+  .gallery{
+  height: 175vh;
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+  padding: 2vw;
+  box-sizing: border-box;
+  overflow: hidden;
+  position: relative;
+
+  .column{
+    width:25%;
+    height:100%;
+    display: flex;
+    flex-direction: column;
+    gap: 2vw;
+    min-width: 250px;
+    position:relative;
+
+    .imageContainer{
+      width:100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+      border-radius: 1vw;
+
+      img{
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }   
+    }
+        &:nth-of-type(1) {
+          top: -20%;
+        }
+
+        &:nth-of-type(2) {
+          top: 10%;
+        }
+      
+        &:nth-of-type(3) {
+          top: -50%;
+        }
+    
+        &:nth-of-type(4) {
+          top: 5%;
+        }
+  }
+
+  span{
+    position: absolute;
+    display: flex;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 200px;
+    height: 50px;
+    button{
+      width: 200px;
+      height: 50px;
+      border: none;
+      border-radius: 10px;
+      font-size: 20px;
+      cursor: pointer;
+      
+    }
+
+      button:hover {
+        background-color: #2980b9;
+        color: #ecf0f1;
+      }
+
+      button:active {
+        /* Keyframes animation for a fancy vanish effect */
+        animation: vanish 0.5s ease-out;
+      }
+  }
+}
+
+
+
+
+.top-space {
+  
+  background-color: #ebf3fe;
+
+}
+.bottom-space {
+  
+  background-color: #ebf3fe;
+
+}
+
+@keyframes vanish {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+}

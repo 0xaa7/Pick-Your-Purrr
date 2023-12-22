@@ -1,0 +1,84 @@
+'use client';
+
+import { useEffect, useRef } from "react";
+import "./galleryscroll.scss"
+import { useTransform, useScroll, motion } from "framer-motion"
+import Lenis from '@studio-freight/lenis'
+import { Link } from "react-router-dom";
+
+const images = [
+  "cat1.jpeg",
+  "cat2.jpeg",
+  "cat3.jpeg",
+  "cat4.jpeg",
+  "cat5.jpeg",
+  "cat6.jpeg",
+  "cat7.jpeg",
+  "cat8.jpeg",
+  "cat9.jpeg",
+  "cat10.jpeg",
+  "cat11.jpeg",
+  "cat12.jpeg",
+  
+]
+
+export default function GalleryScroll () {
+
+  const container = useRef(null);
+  const { scrollYProgress } = useScroll(
+    {
+      target:container,
+      offset:['start end' , 'end start']
+    }
+  )
+const y = useTransform(scrollYProgress, [0,1],[0,600])
+const y2 = useTransform(scrollYProgress, [0,1],[0,-200])
+const y3 = useTransform(scrollYProgress, [0,1],[0,1000])
+const y4 = useTransform(scrollYProgress, [0,1],[0,-100])
+
+
+useEffect(()=>{
+  const lenis = new Lenis()
+
+function raf(time) {
+  lenis.raf(time)
+  requestAnimationFrame(raf)
+}
+
+requestAnimationFrame(raf)
+},[])
+
+  return (
+    <div className="gallery-scroll" >
+      <div className="top-space"></div>
+      <div ref={container} className="gallery">
+        <Column images={[images[0],images[1],images[2]]} y={y} />
+        <Column images={[images[3],images[4],images[5]]} y={y2} />
+        <Column images={[images[6],images[7],images[8]]} y={y3} />
+        <Column images={[images[9],images[10],images[11]]} y={y4} />
+        <span>
+          <Link to="/gallerypage" target="_blank">
+            <button>Gallery</button>
+          </Link></span>
+      </div>
+      <div className="bottom-space"></div>
+    </div>
+  )
+}
+
+
+
+const Column = ({images, y=0}) => {
+  return(
+    <motion.div style={{y}} className="column">
+      {
+        images.map((src, index)=>{
+          return <div key={index} className="imageContainer">
+            <img src={`/Images/${src}`} alt="image" />
+            
+          </div>
+        })
+      }
+    </motion.div>
+  )
+}

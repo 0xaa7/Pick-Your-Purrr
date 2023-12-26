@@ -1,41 +1,87 @@
 import React, { useState, useEffect } from 'react';
-import './GalleryPage.scss'; // Create a CSS file for styling (e.g., GalleryPage.css)
+import axios from 'axios';
+import Masonry from 'react-masonry-css';
+import { debounce } from 'lodash';
+import './GalleryPage.scss';
 
 const GalleryPage = () => {
-  const [images, setImages] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
-  const imagesPerPage = 20;
+  const [catImages, setCatImages] = useState([]);
+  const [page, setPage] = useState(1);
+  const [headerText, setHeaderText] = useState("It's a tough job choosing between fluffballs! Who'll be your purr-fect match?");
+  
+  const scrollLevels = [
+    { position: 0, text: "Did you find your furred one yet?" },
+    { position: 100, text: "hmmmm.. seems you need more cats to look at" },
+    { position: 140, text: "well, you can always reach us for more assisstance to find the furred baby" },
+  ];
 
   useEffect(() => {
-    const fetchImages = async () => {
+    const fetchCatImages = async () => {
       try {
-        const response = await fetch(`https://picsum.photos/v2/list?page=${currentPage}&limit=${imagesPerPage}`);
-        const imageData = await response.json();
-        const imageUrls = imageData.map(image => image.download_url);
-        setImages(prevImages => [...prevImages, ...imageUrls]);
+        const response = await axios.get(
+          'https://api.unsplash.com/photos/random',
+          {
+            params: {
+              query: 'cat',
+              count: 10,
+              page: page,
+              client_id: 'ipTICpxdxfqMYHcvUIcfA4JLb_3_yAp9q5wVHctXRF4',
+            },
+          }
+        );
+
+        if (response.data.length > 0) {
+          setCatImages((prevImages) => [...prevImages, ...response.data]);
+        }
       } catch (error) {
-        console.error('Error fetching images:', error);
+        console.error('Error fetching cat images:', error);
       }
     };
 
-    fetchImages();
-  }, [currentPage]);
+    const handleScroll = debounce(() => {
+      
+      const scrollPosition = window.scrollY || document.documentElement.scrollTop;
+      const newText = scrollLevels.find(level => scrollPosition > level.position)?.text || headerText;
+      setHeaderText(newText);
 
-  const loadMoreImages = () => {
-    setCurrentPage(prevPage => prevPage + 1);
-  };
+     
+      if (
+        window.innerHeight + scrollPosition ===
+        document.documentElement.offsetHeight
+      ) {
+        setPage((prevPage) => prevPage + 1);
+      }
+    }, 500);
+
+    window.addEventListener('scroll', handleScroll);
+
+    fetchCatImages();
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [page]); 
 
   return (
-    <div className='gallery-page'>
-      <div className='image-grid'>
-        {images.map((imageUrl, index) => (
-          <div key={index} className={`image-container grid-size-${(index % 3) + 1}`}>
-            {/* Vary the grid size based on the remainder of the index */}
-            <img loading="lazy" src={imageUrl} alt={`Image ${index}`} className='image' />
+    <div className='cat-gallery'>
+      <div className='header'>
+        <h1>Gallery</h1>
+      </div>
+      <div className='top-heading'>
+        <h2>{headerText}</h2>
+      </div>
+
+      <Masonry
+        breakpointCols={3}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {catImages.map((cat) => (
+          <div key={cat.id} className="cat-card" onClick={() => (cat)}>
+            <img src={cat.urls.small} alt={`Cat ${cat.id}`} />
           </div>
         ))}
-      </div>
-      <button onClick={loadMoreImages}>Load More</button>
+      </Masonry>
     </div>
   );
 };

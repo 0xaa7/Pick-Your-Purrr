@@ -1,7 +1,4 @@
-html {  
-  // scroll-snap-type: y mandatory;
-//    scroll-behavior: smooth;
-}
+
 
 * {
   padding: 0;
@@ -26,6 +23,13 @@ a {
   overflow-y:scroll;
   //  scroll-snap-align: end;
 }
+
+#blog {
+  height:175vh;
+  overflow-y: scroll;
+  //  scroll-snap-align: end;
+}
+
 
 section {
   height: 100vh;

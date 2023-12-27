@@ -9,6 +9,7 @@ import Parallax from "./components/parallax/Parallax";
 // import Portfolio from "./components/portfolio/Portfolio";
 import GalleryPage from "./components/Gallery/GalleryPage/GalleryPage";
 import Blog from "./components/Blog/Blog";
+import BlogPage from "./pages/BlogPage/BlogPage";
 
 
 export default function App () {
@@ -55,6 +56,7 @@ export default function App () {
         
 
         <Route path="/gallerypage" element={<GalleryPage />  } />
+        <Route path="/blogpage" element={<BlogPage />  } />
         
 
       </Routes>

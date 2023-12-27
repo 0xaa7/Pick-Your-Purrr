@@ -3,6 +3,7 @@
 import { useRef } from 'react'
 import "./blog.scss"
 import { useScroll, motion, useTransform } from 'framer-motion'
+import { Link } from 'react-router-dom';
 
 const Blog = () => {
   const ref = useRef(null);
@@ -19,7 +20,9 @@ const opacityimage = useTransform(scrollYProgress,[0, 1], [0.3, 1]);
   return (
     <>
     <div  className='blog'>
+      
       <div className='wrapper'>
+         
         <span>
           <h1 
               >Our Blogs</h1>
@@ -30,8 +33,9 @@ const opacityimage = useTransform(scrollYProgress,[0, 1], [0.3, 1]);
             }} className='image-container'>
           <img src='catblog-removebg-preview.png' />
         </motion.div>
+
         <motion.div ref={ref} className='blog-container'>
-          <div className='r1'>
+                    <div className='r1'>
             <motion.div  style={{
               scale:scale,
               opacity:opacity,
@@ -84,6 +88,9 @@ const opacityimage = useTransform(scrollYProgress,[0, 1], [0.3, 1]);
               </div></motion.div>
           </div>
         </motion.div>
+         <Link to="/blogpage" className="view-all-button">
+            View All
+          </Link>
       </div>
     </div>
             </>

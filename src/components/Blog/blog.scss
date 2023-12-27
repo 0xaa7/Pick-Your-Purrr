@@ -11,6 +11,22 @@
     background-color: #ebf3fe;
     justify-content: space-between;
     position: relative;
+   
+  .view-all-button {
+     
+      background-color: #ed42f3;
+      color: #fff;
+      width: 150px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 5px;
+      text-decoration: none;
+      font-size: 16px;
+      rotate: 90deg;
+      
+    }
 
     span{
       position: absolute;
@@ -45,6 +61,8 @@
       height: 100%;
       margin-top: 45px;
 
+
+        
       .r1{
         display: flex;
         flex-direction: row;
@@ -59,6 +77,7 @@
         width: 300px;
         height: 300px;
         display: flex;
+ 
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;

@@ -368,11 +368,16 @@ export interface ApiBlogBlog extends Schema.CollectionType {
     singularName: 'blog';
     pluralName: 'blogs';
     displayName: 'Blogs';
+    description: '';
   };
   options: {
     draftAndPublish: true;
   };
   attributes: {
+    blogTitle: Attribute.String;
+    blogDesc: Attribute.String;
+    coverImage: Attribute.Media;
+    blogContent: Attribute.Blocks;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;

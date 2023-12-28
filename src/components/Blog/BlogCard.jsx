@@ -1,8 +1,8 @@
 import "./blogcard.scss"
 const BlogCard = () => {
+  
   return (
-     <div  className='blog-card'>
-                    
+     <div  className='blog-card'>           
             <div className='blog'>
               <div className='blog-image'>
               <img src="catblog1.jpeg"/>

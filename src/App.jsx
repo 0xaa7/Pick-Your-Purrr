@@ -10,9 +10,23 @@ import Parallax from "./components/parallax/Parallax";
 import GalleryPage from "./components/Gallery/GalleryPage/GalleryPage";
 import Blog from "./components/Blog/Blog";
 import BlogPage from "./pages/BlogPage/BlogPage";
+import useFetch from "./hooks/useFetch";
 
 
 export default function App () {
+  const apiUrl = "http://localhost:1337/api/blogs?populate=*";
+  const { loading, error, data } = useFetch(apiUrl);
+  console.log(data);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error.message}</p>;
+  }
+
+ 
 
   return (
     <BrowserRouter>
@@ -56,7 +70,7 @@ export default function App () {
         
 
         <Route path="/gallerypage" element={<GalleryPage />  } />
-        <Route path="/blogpage" element={<BlogPage />  } />
+        <Route path="/blogpage" element={<BlogPage blogs={data?data:""} />  } />
         
 
       </Routes>

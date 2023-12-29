@@ -1,8 +1,10 @@
-import React, { useState, useEffect } from 'react';
+import  { useState, useEffect } from 'react';
 import axios from 'axios';
 import Masonry from 'react-masonry-css';
 import { debounce } from 'lodash';
 import './GalleryPage.scss';
+import Transition from '../../../Transition';
+
 
 const GalleryPage = () => {
   const [catImages, setCatImages] = useState([]);
@@ -63,6 +65,8 @@ const GalleryPage = () => {
   }, [page]); 
 
   return (
+<Transition>
+
     <div className='cat-gallery'>
       <div className='header'>
         <h1>Gallery</h1>
@@ -83,6 +87,7 @@ const GalleryPage = () => {
         ))}
       </Masonry>
     </div>
+        </Transition>
   );
 };
 

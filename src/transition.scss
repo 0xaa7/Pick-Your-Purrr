@@ -1,0 +1,21 @@
+.slide-in {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #E385B5;
+  transform-origin: top;
+  z-index: 2;
+}
+
+.slide-out {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: #E385B5;
+  transform-origin: bottom;
+  z-index: 2;
+}

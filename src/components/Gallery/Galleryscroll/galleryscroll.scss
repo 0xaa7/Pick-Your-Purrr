@@ -57,20 +57,23 @@
     left: 0;
     margin: auto;
     width: 200px;
-    height: 50px;
+    height: 60px;
     button{
       width: 200px;
-      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
       border: none;
-      border-radius: 10px;
-      font-size: 20px;
+      border-radius: 40px;
+      font-size: 40px;
       cursor: pointer;
       
     }
 
       button:hover {
-        background-color: #2980b9;
-        color: #ecf0f1;
+        background-color: #4b2086;
+        color: #eb4687;
       }
 
       button:active {
@@ -89,7 +92,7 @@
 
 }
 .bottom-space {
-  height: 10vh;
+  height: 20vh;
   background-color: #ebf3fe;
 
 }

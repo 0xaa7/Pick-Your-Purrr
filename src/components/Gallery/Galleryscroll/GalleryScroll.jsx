@@ -6,6 +6,7 @@ import { useTransform, useScroll, motion } from "framer-motion"
 import Lenis from '@studio-freight/lenis'
 import { Link } from "react-router-dom";
 
+
 const images = [
   "cat1.jpeg",
   "cat2.jpeg",

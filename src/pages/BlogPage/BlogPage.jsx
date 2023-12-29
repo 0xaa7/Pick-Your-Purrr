@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './blogpage.scss'
 
 const BlogPage = ({ blogs }) => {
@@ -13,10 +14,11 @@ const BlogPage = ({ blogs }) => {
           </div>
         </div>
 
-        <div className='card-layout'>
+       
         <div className="blog-card">
           {blogs && blogs.data.map((blog) => (
-            <div key={blog.id} className="blog">
+          <Link key={blog.id} to={`/blog/${blog.id}`}>
+            <div  className="blog">
               <div className='blog-image'>
                 {blog.attributes.coverImage && (
                   <img
@@ -27,12 +29,12 @@ const BlogPage = ({ blogs }) => {
               </div>
               <div className='blog-content' >
                 <h3>{blog.attributes.blogTitle}</h3>
-              <p>{blog.attributes.blogDesc}</p>
               </div >   
             </div>
+          </Link>
           ))}
         </div>
-        </div>
+        
       </div>
     </div>
   );

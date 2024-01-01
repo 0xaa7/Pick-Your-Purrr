@@ -58,7 +58,7 @@ export default function App() {
   const location = useLocation();
   const apiUrl = "https://strapi-zjxa.onrender.com/api/blogs?populate=*";
   const { loading, error, data } = useFetch(apiUrl);
-
+  console.log(data)
  
   if (loading) {
     return <p>Loading...</p>;

@@ -56,7 +56,7 @@ function AppLayout() {
 
 export default function App() {
   const location = useLocation();
-  const apiUrl = "http://localhost:1337/api/blogs?populate=*";
+  const apiUrl = "https://strapi-zjxa.onrender.com/api/blogs?populate=*";
   const { loading, error, data } = useFetch(apiUrl);
 
  

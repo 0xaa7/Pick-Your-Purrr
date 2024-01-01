@@ -1,5 +1,4 @@
-
-import './Navbar.scss';
+import './navbar.scss';
 import { motion } from 'framer-motion';
 import Sidebar from '../sidebar/Sidebar';
 import NavLinks from './NavLinks/NavLinks'

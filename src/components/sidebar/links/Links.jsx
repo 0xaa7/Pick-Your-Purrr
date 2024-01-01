@@ -27,7 +27,7 @@ import { motion } from "framer-motion";
 const Links = () => {
   const items = [
     "Home",
-    "About Us",
+    "Our Story",
     "Gallery",
     "FAQ",
     "Contact Us"

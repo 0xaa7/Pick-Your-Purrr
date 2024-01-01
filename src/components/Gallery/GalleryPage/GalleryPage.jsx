@@ -3,8 +3,7 @@ import axios from 'axios';
 import Masonry from 'react-masonry-css';
 import { debounce } from 'lodash';
 import './GalleryPage.scss';
-import Transition from '../../../Transition';
-
+import Transition from '../../Transition/Transition';
 
 const GalleryPage = () => {
   const [catImages, setCatImages] = useState([]);
@@ -87,7 +86,7 @@ const GalleryPage = () => {
         ))}
       </Masonry>
     </div>
-        </Transition>
+ </Transition>
   );
 };
 

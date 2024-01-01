@@ -1,4 +1,3 @@
-
 import { Route, Routes, useLocation } from "react-router-dom";
 import "./app.scss";
 import GalleryScroll from "./components/Gallery/Galleryscroll/GalleryScroll";
@@ -7,82 +6,76 @@ import Cursor from "./components/cursor/Cursor";
 import Hero from "./components/hero/Hero";
 import Navbar from "./components/navbar/Navbar";
 import Parallax from "./components/parallax/Parallax";
-// import Portfolio from "./components/portfolio/Portfolio";
 import GalleryPage from "./components/Gallery/GalleryPage/GalleryPage";
 import Blog from "./components/Blog/Blog";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import useFetch from "./hooks/useFetch";
 import BlogContent from "./pages/BlogContent/BlogContent";
 import { AnimatePresence } from "framer-motion";
-
-
-
 import { Outlet } from 'react-router-dom';
+
 
 function AppLayout() {
   return (
     <>
-          <Cursor />
-          <section>
-          <Navbar />
-          <Hero />
-          </section>
+      <Cursor />
+      <section id="Home">
+        <Navbar />
+        <Hero />
+      </section>
 
-          <section>
-          <Parallax />
-          </section>
+      <section id="Our Story">
+        <Parallax />
+      </section>
 
-          <section id="gallery-scroll">
-          <GalleryScroll />
-          </section>
-          
-          <section id="blog" >
-          <Blog />
-          </section>
-        
-          <section>
-            {/* <Portfolio /> */}
-          </section>
-
-          <section>
-            
-          </section>
-          <section>
-            
-            <Contact /> 
-          </section>
+      <section id="Gallery">
+        <GalleryScroll />
+      </section>
       
+      <section id="Blog">
+        <Blog />
+      </section>
+    
+      <section>
+        {/* <Portfolio /> */}
+      </section>
+
+      <section>
+        
+      </section>
+      <section>
+        <Contact /> 
+      </section>
+
       <main>
         <Outlet />  
       </main>
-
-     
     </>
-  ) 
+  );
 }
 
 export default function App() {
-
-    const location= useLocation();
+  const location = useLocation();
   const apiUrl = "http://localhost:1337/api/blogs?populate=*";
   const { loading, error, data } = useFetch(apiUrl);
+
+ 
   if (loading) {
     return <p>Loading...</p>;
   }
+
   if (error) {
     return <p>Error: {error.message}</p>;
   }
-   
 
   return (
-     <AnimatePresence mode="wait">
-      <Routes key={location.pathname} location={location} >
-        <Route path="/" element={<AppLayout />}></Route>
-       <Route path="/gallerypage" element={<GalleryPage />} />
-       <Route path="/blogpage" element={<BlogPage blogs={data?data:""} />} />
-      <Route path="/blog/:id" element={<BlogContent blogs={data ? data : ""} />} />
-     </Routes>
-     </AnimatePresence>
+    <AnimatePresence mode="wait">
+      <Routes key={location.pathname} location={location}>
+        <Route path="/" element={<AppLayout />} />
+        <Route path="/gallerypage" element={<GalleryPage />} />
+        <Route path="/blogpage" element={<BlogPage blogs={data ? data : ""} />} />
+        <Route path="/blog/:id" element={<BlogContent blogs={data ? data : ""} />} />
+      </Routes>
+    </AnimatePresence>
   );
-
 }

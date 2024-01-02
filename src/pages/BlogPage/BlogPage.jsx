@@ -20,7 +20,7 @@ const BlogPage = ({ blogs }) => {
               <div className='blog-image'>
                 {blog.attributes.coverImage && (
                   <img
-                  src={`http://localhost:1337${blog.attributes.coverImage.data[0].attributes.url}`}
+                  src={`https://backend-wpof.onrender.com*${blog.attributes.coverImage.data[0].attributes.url}`}
                   alt="Blog Cover"
                   />
                   )}

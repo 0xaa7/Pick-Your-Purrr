@@ -56,7 +56,7 @@ function AppLayout() {
 
 export default function App() {
   const location = useLocation();
-  const apiUrl = "https://strapi-zjxa.onrender.com/api/blogs?populate=*";
+  const apiUrl = "https://backend-wpof.onrender.com/api/blogs?populate=*";
   const { loading, error, data } = useFetch(apiUrl);
   console.log(data)
  

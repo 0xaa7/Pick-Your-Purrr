@@ -13,6 +13,7 @@ import useFetch from "./hooks/useFetch";
 import BlogContent from "./pages/BlogContent/BlogContent";
 import { AnimatePresence } from "framer-motion";
 import { Outlet } from 'react-router-dom';
+import Steps from "./components/steps/Steps";
 
 
 function AppLayout() {
@@ -36,13 +37,13 @@ function AppLayout() {
         <Blog />
       </section>
     
+      
+        <Steps />
+    
       <section>
         {/* <Portfolio /> */}
       </section>
 
-      <section>
-        
-      </section>
       <section>
         <Contact /> 
       </section>

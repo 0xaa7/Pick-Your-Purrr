@@ -7,10 +7,15 @@
 }
 
 body {
-  
+  display: flex;
   color: #4b2086;
+  background-color: #ebf3fe;
   user-select: none;
   overflow-x: hidden;
+  overflow-y: auto;
+  
+ 
+  
 }
 
 a {
@@ -27,6 +32,14 @@ a {
   overflow-y: scroll;
   
 }
+#steps {
+  height: fit-content;
+  overflow-y: auto;
+ 
+
+}
+
+
 
 
 section {

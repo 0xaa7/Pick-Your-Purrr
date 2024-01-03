@@ -6,7 +6,7 @@ import { useScroll, motion, useTransform } from 'framer-motion'
 import { Link } from 'react-router-dom';
 
 const Blog = () => {
-  const ref = useRef(null);
+const ref = useRef(null);
  const { scrollYProgress } = useScroll({
     target: ref,
     offset:["0 1", "0.9 1"],

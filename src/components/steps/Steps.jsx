@@ -1,21 +1,40 @@
+import { useRef } from "react";
 import "./steps.scss"
+import { useScroll, useTransform, motion } from "framer-motion";
 
 const Steps = () => {
+const ref = useRef(null);
+ const { scrollYProgress } = useScroll({
+    target: ref,
+    offset:["0 1", "0.6 1"],
+  });
+
+ const scale = useTransform(scrollYProgress,[0, 1], [0.89, 1]);
+ const opacity = useTransform(scrollYProgress,[0, 1], [1, 1]);
+ const scale1 = useTransform(scrollYProgress,[0, 1], [0.95, 1]);
+ const opacity1 = useTransform(scrollYProgress,[0, 1], [1, 1]);
+
   return (
-    <div className="container">
-      <div className="text-container"> 
-        <div className="text-card">
-          <h1>Step 1 - When your Cat senses tingle; GIVE US A RING!</h1>
-          <h1>Step 2 - Let's spill the beans! What's your dream cat scenario? Make it fabulous!</h1>
-          <h1>
+    <div className="container" ref={ref}>
+      <div  className="text-container"> 
+        <motion.div style={{
+            scale:scale,
+            opacity:opacity,
+          }}  className="text-card">
+          <motion.h1  >Step 1 - When your Cat senses tingle; GIVE US A RING!</motion.h1>
+          <motion.h1>Step 2 - Let's spill the beans! What's your dream cat scenario? Make it fabulous!</motion.h1>
+          <motion.h1>
             Step 3 - Brace yourself for the purr-ade of potential partners-in-crime! We're sending feline resumes your way until you Pick-your-Purrr!!
-          </h1>
-          <h1>
+          </motion.h1>
+          <motion.h1>
             Step 4 - Come-on over and snatch your feline Soulmate for the next decade - it's like Tinder, but for aspiring cat parents!
-          </h1>
-        </div>
+          </motion.h1>
+        </motion.div>
       </div>
-      <div className="card-container">
+      <motion.div style={{
+            scale:scale1,
+            opacity:opacity1,
+          }}  className="card-container">
 
       <div className="card">
         <p>
@@ -42,7 +61,7 @@ Our kittens aren't just cute – they're Pros! Triple-checked for litter trainin
         </p>
       </div>
       
-      </div>
+      </motion.div>
     </div>
   )
 }

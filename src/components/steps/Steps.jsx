@@ -35,7 +35,7 @@ const Steps = () => {
 From day one 'til forever, our support's purr-manent! Queries or concerns – just whatsapp or call us; we've got your back, always!
         </p>
       </div>
-      <div className="card">
+      <div className="card1">
         <p>
           Graduates of Purrfection!
 Our kittens aren't just cute – they're Pros! Triple-checked for litter training, ability to eat different types of food, and no tummy dramas before they meet you!

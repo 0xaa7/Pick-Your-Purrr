@@ -33,7 +33,7 @@ function AppLayout() {
         <GalleryScroll />
       </section>
       
-      <section id="Blog">
+      <section id="blog">
         <Blog />
       </section>
     

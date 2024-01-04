@@ -1,72 +1,110 @@
+@import "../../app.scss";
+
 .hero {
-  height: calc(100vh - 100px);
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  background-image: url("background2.png");
+  background-size: contain;
+  justify-content: space-between;
+  align-items: center;
   position: relative;
-  z-index: 1;
 
-
-
-
+    @include mobile {
+        display: flex;
+        
+        flex-direction: column;
+        justify-content:space-between;
+        align-items: center;
+      }
+ 
   .textContainer {
+    margin-left: 50px;
     display: flex;
-    width: 800px;
-    height: 400px;
+    max-width: 50%;
+    width: 100%;
+    height: fit-content;
+    justify-content: center;
+    align-items: flex-start;
     flex-direction: column;
-    position: absolute;
-    overflow: hidden;
-    gap: 80px;
-    z-index: 2;
-    top: 45px;
-    left: 0;
-    transform: translate(-50%, -50%);
+    
 
+    @include mobile {
+        display: flex;
+        margin-left: 0;
+          width: 100%;
+        justify-content: center;
+        align-items: center;
+        margin-top: 100px;
+        height: fit-content;
+        flex-direction: column;
+      }
+   
 
-    .h1-overlay {
+    h1{
       display: flex;
-      position: absolute;
-      top: 100px;
-      justify-content: center;
-      align-items: center;
       color: #4b1794;
       font-weight: 800;
+      width: 400px;
       height: 100px;
+      margin: 0px;
       font-size: 80px;
-      margin-bottom: 50px;
-      top: 120px;
-      left: 70px;
       cursor: pointer;
-      user-select: none;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      @include mobile {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 800;
+          font-size: 60px;
+            height: 50px;
+            margin: 0px;
+            font-size: 30px; 
+        }
     }
 
-    .h1-overlay:hover {
-      color: #eb4687;
-
-      text-shadow: #4b1794 6px 6px 12px,
-        #4b1794 6px 6px 12px,
-        #4b1794 6px 6px 12px;
-
-    }
-
-    .p-overlay {
-      position: absolute;
-      top: 100px;
+    p{
       width: 500px;
       color: #eb4687;
       font-weight: 800;
-      font-size: 30px;
       line-height: 30px;
-      margin-top: 110px;
-      left: 70px;
+      font-size: 30px;
       cursor: pointer;
-      user-select: none;
+
+      @include mobile {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-weight: 800;
+          width: 300px;
+          font-size: 15px;
+         
+        }
     }
+    .social {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 10px;
+      gap: 20px;
+      width: 150px;
+      height: 50px;
+      background-color: #4b1794;
+      border-radius: 15px;
+      z-index: 2;
 
-    .p-overlay:hover {
-      text-shadow: #f8f8f8 6px 6px 12px,
-        #df3679 6px 6px 12px,
-        #fd1974 6px 6px 12px;
+      img {
+        width: 24px;
+        height: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
 
     }
-
   }
 
   .scrollContainer {
@@ -95,64 +133,47 @@
 
   .sliderText {
     position: absolute;
-    font-size: 45vh;
+    font-size: 30vh;
     font-weight: bold;
     width: 100%;
-    bottom: -50%;
-    z-index: 2;
+    height: fit-content;
+    bottom: -20%;
     opacity: 0.15;
     white-space: nowrap;
-    z-index: 1;
-
   }
 
 
   .imageContainer {
-    height: 100vh;
-    width: 100%;
-    position: relative;
-    top: 0;
-    right: 0;
-    overflow: hidden;
-    background-image: url("background2.png");
-    background-size: cover;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   max-width: 50%;
+ 
+   
 
     img {
-      position: absolute;
-      right: 80px;
-      top: 20px;
-      width: 600px;
+     
+      width: 800px;
       height: 100vh;
+      padding-right: 100px;
       object-fit: contain;
       z-index: 2;
+      margin-left: 20px;
+      
+
+      @include mobile {
+          display: flex;
+          width: 400px;
+          height: 50vh;
+          align-items: center;
+          justify-content: center;
+          object-fit: contain;
+          z-index: 2;
+        }
     }
 
   }
 
-  .social {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 20px;
-    width: 150px;
-    height: 50px;
-    background-color: #4b1794;
-    position: absolute;
-    border: none;
-    border-radius: 15px;
-    top: 64%;
-    left: 5.25%;
-    transform: translate(-50%, -50%);
-    z-index: 2;
-
-    img {
-      width: 24px;
-      height: 24px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-  }
+  
 
 }

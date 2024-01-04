@@ -4,7 +4,7 @@
   height: 100vh;
   width: 100%;
   display: flex;
-  background-image: url("background2.png");
+  background-image: url("./public/background2.png");
   background-size: cover;
   background-repeat: no-repeat;
   justify-content: space-between;
@@ -12,14 +12,14 @@
   position: relative;
 
     @include mobile {
-        display: flex;
-      background-size: contain;
-        background-position:20px 20px 20px ;
+        display: flex; 
         flex-direction: column;
+        background-image: none;
         justify-content:center;
         gap: 20px;
         align-items: center;
-      
+        background-image: url("./public/bg1.png");
+        background-position:left 340px ;
       }
  
   .textContainer {
@@ -160,8 +160,7 @@
    max-width: 50%;
    position: relative;
    z-index: 1;
- 
-   
+
 
     img {
      

@@ -142,7 +142,8 @@
     white-space: nowrap;
 
     @include mobile {
-        bottom:-20%;
+      position: absolute;
+        bottom:0;
         font-size: 40vh;
       }
   }

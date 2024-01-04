@@ -25,10 +25,10 @@ function AppLayout() {
         <Hero />
       </section>
 
-      {/* <section id="Our Story">
+      <section id="Our Story">
         <Parallax />
       </section>
-
+{/*
       <section id="Gallery">
         <GalleryScroll />
       </section>

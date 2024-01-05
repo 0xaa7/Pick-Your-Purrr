@@ -34,7 +34,7 @@ export default function GalleryScroll () {
   )
 const y = useTransform(scrollYProgress, [0,1],[0,600])
 const y2 = useTransform(scrollYProgress, [0,1],[0,-200])
-const y3 = useTransform(scrollYProgress, [0,1],[0,1000])
+const y3 = useTransform(scrollYProgress, [0,1],[0,800])
 const y4 = useTransform(scrollYProgress, [0,1],[0,-100])
 
 

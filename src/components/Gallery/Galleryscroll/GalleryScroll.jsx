@@ -1,9 +1,9 @@
-'use client';
+// 'use client';
 
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import "./galleryscroll.scss"
 import { useTransform, useScroll, motion } from "framer-motion"
-import Lenis from '@studio-freight/lenis'
+// import Lenis from '@studio-freight/lenis'
 import { Link } from "react-router-dom";
 
 
@@ -38,16 +38,16 @@ const y3 = useTransform(scrollYProgress, [0,1],[0,1000])
 const y4 = useTransform(scrollYProgress, [0,1],[0,-100])
 
 
-useEffect(()=>{
-  const lenis = new Lenis()
+// useEffect(()=>{
+//   const lenis = new Lenis()
 
-function raf(time) {
-  lenis.raf(time)
-  requestAnimationFrame(raf)
-}
+// function raf(time) {
+//   lenis.raf(time)
+//   requestAnimationFrame(raf)
+// }
 
-requestAnimationFrame(raf)
-},[])
+// requestAnimationFrame(raf)
+// },[])
 
   return (
     <div className="gallery-scroll" >

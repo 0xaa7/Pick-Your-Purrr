@@ -31,12 +31,12 @@ function AppLayout() {
       <section id="Gallery">
         <GalleryScroll />
       </section>
-{/*
+
       
       <section id="blog">
         <Blog />
       </section>
-    
+    {/*
       
         <Steps />
     

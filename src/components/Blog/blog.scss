@@ -1,9 +1,8 @@
+@import "../../app.scss";
+
 .blog{
   display: flex;
   
-
- 
-
   .wrapper{
     width: 100%;
     height:fit-content;
@@ -11,7 +10,15 @@
     align-items: center;
     background-color: #ebf3fe;
     justify-content: space-between;
+    gap: 10px;
     position: relative;
+
+    @include mobile{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
    
   .view-all-button {
      
@@ -22,30 +29,54 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      border-radius: 5px;
+      border-radius: 15px;
       text-decoration: none;
       font-size: 16px;
-      rotate: 90deg;
-      
+      transform: rotate(90deg); 
     }
 
-    span{
+      .main-header{
       position: absolute;
-      width: 100px;
+      top:5%;
+      left:5%;
+      width: 500px;
       height: 100px;
-      top: 10%;
-      left: 5%;
-      z-index: 4;
+       z-index: 4;
+
+      @include mobile {
+        display: flex;
+        left: 0;
+        width: 100%;
+        height: 100px;
+        align-items: center;
+        justify-content: center;
+      }
+
       h1{
         font-size: 100px;
         line-height: 85px;
+
+        @include mobile {
+            display: flex;
+            width: 100%;
+            text-align: center;
+            height: 200px;
+            align-items: center;
+            justify-content: center;
+          }
       }
     }
     .image-container{
       display: flex;
       align-items: flex-end;
-     width: 50%;
+      width: 50%;
       height: 100%;
+
+      @include mobile{
+        display: flex;
+          align-items: center;
+          justify-content: center;
+      }
       img{
         width: 100%;
         height:100% ;
@@ -60,7 +91,7 @@
       gap: 25px;
       width: 70%;
       height: 100%;
-      margin-top: 45px;
+      
 
 
         
@@ -68,11 +99,22 @@
         display: flex;
         flex-direction: row;
         gap: 25px;
+        @include mobile {
+          display: flex;
+          flex-direction: column;
+          gap: 25px;
+        }
       }
       .r2 {
         display: flex;
         flex-direction: row;
         gap: 25px;
+
+          @include mobile {
+              display: flex;
+              flex-direction: column;
+              gap: 25px;
+            }
       }
       .blog{
         width: 300px;

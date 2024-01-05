@@ -23,10 +23,10 @@ const opacityimage = useTransform(scrollYProgress,[0, 1], [0.3, 1]);
       
       <div className='wrapper'>
          
-        <span>
+        <div className='main-header'>
           <h1 
               >Our Blogs</h1>
-        </span>
+        </div>
         <motion.div style={{
               scale:scaleimage,
               opacity:opacityimage,
@@ -88,9 +88,9 @@ const opacityimage = useTransform(scrollYProgress,[0, 1], [0.3, 1]);
               </div></motion.div>
           </div>
         </motion.div>
-         <Link to="/blogpage" className="view-all-button">
+         {/* <Link to="/blogpage" className="view-all-button">
             View All
-          </Link>
+          </Link> */}
       </div>
     </div>
             </>

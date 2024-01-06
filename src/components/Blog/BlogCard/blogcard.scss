@@ -2,10 +2,7 @@
 
 .blog {
   display: flex;
-
-
-
-
+  
     .blog-container {
       display: flex;
       align-items: center;
@@ -48,7 +45,7 @@
         }
 
         .blog-content {
-          background-color: whitesmoke;
+          background-color: rgb(255, 255, 255);
           display: flex;
           flex-direction: column;
           align-items: flex-start;

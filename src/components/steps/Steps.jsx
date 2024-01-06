@@ -15,8 +15,8 @@ const ref = useRef(null);
  const opacity1 = useTransform(scrollYProgress,[0, 1], [1, 1]);
 
   return (
-    <div className="container" ref={ref}>
-      <div  className="text-container"> 
+    <div className="container" >
+      <div  className="text-container" ref={ref} > 
         <motion.div style={{
             scale:scale,
             opacity:opacity,

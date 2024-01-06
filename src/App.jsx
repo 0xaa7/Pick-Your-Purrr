@@ -19,12 +19,12 @@ import Steps from "./components/steps/Steps";
 function AppLayout() {
   return (
     <>
-      <Cursor />
+    <Cursor />
       <section id="Home">
         <Navbar />
         <Hero />
       </section>
-
+    
       <section id="Our-Story">
         <Parallax />
       </section>
@@ -35,16 +35,16 @@ function AppLayout() {
       
       <section id="blog">
         <Blog />
-      </section>
+      </section> 
       
         <Steps />
-    {/*
     
-      <section>
+    
+      {/* <section>
         <Portfolio />
-      </section>
+      </section> */}
 
-      <section>
+      {/* <section>
         <Contact /> 
       </section> */}
 

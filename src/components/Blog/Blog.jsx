@@ -69,27 +69,6 @@ const { scrollYProgress } = useScroll({ target: ref, offset: ["0 1", "0.33 1"]})
                 
               ))}
             </div>
-{/* 
-            <div className='r2' >
-              {blogs.slice(2, 4).map(blog => (
-                <motion.div
-                  key={blog.id}
-                  style={{
-                    scale: scale1,
-                    opacity:opacity1,
-                  }}
-                  className='blog'>
-                  <div className='blog-image'>
-                    <img src={blog.img} alt={`blog-${blog.id}`} />
-                  </div>
-                  <div className='blog-content'>
-                    <h3>{blog.blogTitle}</h3>
-                    <h4>{blog.blogDesc}</h4>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-            */}
           </motion.div> 
           <Link to="/blogpage" className="view-all-button">
             View All

@@ -37,7 +37,9 @@ function AppLayout() {
         <Blog />
       </section> 
       
+      <section>
         <Steps />
+      </section>
     
     
       {/* <section>

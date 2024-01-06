@@ -25,7 +25,7 @@ function AppLayout() {
         <Hero />
       </section>
 
-      <section id="Our Story">
+      <section id="Our-Story">
         <Parallax />
       </section>
       <section id="Gallery">
@@ -36,9 +36,9 @@ function AppLayout() {
       <section id="blog">
         <Blog />
       </section>
-    {/*
       
         <Steps />
+    {/*
     
       <section>
         <Portfolio />

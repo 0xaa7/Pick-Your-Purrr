@@ -28,15 +28,18 @@ a {
 }
 
 #blog {
-  height:110vh;
-  
+  height: fit-content;
+  overflow-y: auto;
+}
+
+#Our-Story {
+  height: 110vh;
   
 }
 #steps {
   height: fit-content;
   overflow-y: auto;
  
-
 }
 
 

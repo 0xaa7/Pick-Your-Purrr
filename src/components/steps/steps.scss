@@ -1,3 +1,5 @@
+@import "../../app.scss";
+
 .container{
   width: 100%;
   display: flex;
@@ -7,13 +9,28 @@
   background-color: #ebf3fe;
   margin: 50px;
 
+  @include mobile{
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 20px;
+  }
+  
+
   .text-container{
     display: flex;
     max-width: 60%;
+
+   @include mobile{
+    display: flex;
+    max-width: 100%;
+   }
     
     
     .text-card{
       width: 100%;
+      display: flex;
+      flex-direction: column;
       position: sticky;
       align-items: center;
       justify-content: center;
@@ -25,6 +42,8 @@
             -5px -5px 30px #ffffff;
       color: rgb(166, 57, 209);
       padding: 20px;
+
+     
         h1{
           font-size: 26px;
         }
@@ -39,6 +58,11 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @include mobile {
+      display: flex;
+      max-width: 100%;
+    }
   .card{
     max-width: 400px;
     position: sticky;

@@ -44,9 +44,9 @@ function AppLayout() {
         <Portfolio />
       </section> */}
 
-      {/* <section>
+      <section>
         <Contact /> 
-      </section> */}
+      </section>
 
       <main>
         <Outlet />  

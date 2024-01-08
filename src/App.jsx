@@ -46,7 +46,7 @@ function AppLayout() {
         <Portfolio />
       </section> */}
 
-      <section>
+      <section id="contact">
         <Contact /> 
       </section>
 

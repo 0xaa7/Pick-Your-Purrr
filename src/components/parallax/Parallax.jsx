@@ -8,14 +8,17 @@ const Parallax = () => {
 
   const { scrollYProgress } = useScroll({
     target: ref,
-    offset: ["start end", "end end"],
+    offset: ["0 1", "0.65 1"],
+   
   });
 
   
-  const xL = useTransform(scrollYProgress, [0, 1], ["0", "-80%"]);
-  const xR = useTransform(scrollYProgress, [0, 1], ["0", "108%"]);
-  const xI = useTransform(scrollYProgress, [0, 1], ["-50", "0%"]);
-  
+   const xL = useTransform(scrollYProgress, [0, 1], ["0", "-100%"]);
+   const xR = useTransform(scrollYProgress, [0, 1], ["0", "100%"]);
+   const xI = useTransform(scrollYProgress, [0, 1], ["-100%", "-60%"]);
+const xI1 = useTransform(scrollYProgress, [0, 1], ["100%", "60%"]);
+
+
 
   return (
     <div className="parallax" ref={ref}>
@@ -30,11 +33,20 @@ Driven by my passion for Persian kittens and the desire to make a positive impac
 “My Mission - is to bring joy and fulfillment to those who yearn for the perfect feline companion. With my commitment to simplifying your search for the perfect pet, your journey to feline happiness begins right here."
         </p>
       </motion.div>
-      <motion.div style={{ x:xL }} className="left"> </motion.div>
+      <motion.div style={{ x:xL,transition: { duration: 1212, ease: "easeInOut" } }}  className="left"> </motion.div>
       <motion.div style={{ x:xR }} className="right"> </motion.div>
       <motion.div style={{x:xI}} className="image" > 
         <img src="./catjump1.png" />
       </motion.div>
+      <motion.div style={{x:xI1}} className="image1" > 
+        <img src="./catjump2.png" />
+      </motion.div>
+      {/* <motion.div style={{x:xI}} className="image2" > 
+        <img src="./catjump1.png" />
+      </motion.div><motion.div style={{x:xI}} className="image3" > 
+        <img src="./catjump1.png" />
+      </motion.div> */}
+      <video src="TensorPix - TensorPix - istockphoto-473235311-640_adpp_is.mp4" autoPlay loop muted className="video"/>
     </div>
   );
 };

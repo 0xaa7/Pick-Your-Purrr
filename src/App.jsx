@@ -11,9 +11,12 @@ import Blog from "./components/Blog/Blog";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import useFetch from "./hooks/useFetch";
 import BlogContent from "./pages/BlogContent/BlogContent";
+
 import { AnimatePresence } from "framer-motion";
 import { Outlet } from 'react-router-dom';
 import Steps from "./components/steps/Steps";
+
+import Testimonials from "./components/Testimonials/Testimonials";
 
 
 function AppLayout() {
@@ -42,9 +45,9 @@ function AppLayout() {
       
     
     
-      {/* <section>
-        <Portfolio />
-      </section> */}
+      <section>
+        <Testimonials />
+      </section>
 
       <section id="contact">
         <Contact /> 
@@ -76,8 +79,12 @@ export default function App() {
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<AppLayout />} />
         <Route path="/gallerypage" element={<GalleryPage />} />
-        <Route path="/blogpage" element={<BlogPage blogs={data ? data : ""} />} />
-        <Route path="/blog/:id" element={<BlogContent blogs={data ? data : ""} />} />
+        <Route path="/blogpage" element={<BlogPage 
+        blogs={data ? data : ""}
+         />} />
+        <Route path="/blog/:id" element={<BlogContent
+         blogs={data ? data : ""}
+          />} />
       </Routes>
     </AnimatePresence>
   );

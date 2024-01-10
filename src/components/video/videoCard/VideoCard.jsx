@@ -18,7 +18,7 @@ const VideoCard = ({ data }) => {
     className="video-card">
               <div className="card">
 
-              <video src={data.video} controls />      
+              <video src={data.video}  />      
               </div>
               <div className="content" ref={ref}>
                 <h1>{data.name}</h1>

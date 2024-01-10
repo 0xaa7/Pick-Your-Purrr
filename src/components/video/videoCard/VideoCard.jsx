@@ -1,5 +1,6 @@
 import { useScroll, motion, useTransform } from "framer-motion";
 import { useRef } from "react";
+import "./videocard.scss"
 
 const VideoCard = ({ data }) => {
 

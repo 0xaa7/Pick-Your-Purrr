@@ -17,6 +17,7 @@ import { Outlet } from 'react-router-dom';
 import Steps from "./components/steps/Steps";
 
 import Testimonials from "./components/Testimonials/Testimonials";
+import Video from "./components/video/Video";
 
 
 function AppLayout() {
@@ -35,6 +36,10 @@ function AppLayout() {
         <GalleryScroll />
       </section>
 
+      <section id="video">
+        <Video />
+      </section>
+
       
       <section id="blog">
         <Blog />
@@ -45,7 +50,7 @@ function AppLayout() {
       
     
     
-      <section>
+      <section id="testimonials"> 
         <Testimonials />
       </section>
 
@@ -62,17 +67,17 @@ function AppLayout() {
 
 export default function App() {
   const location = useLocation();
-  const apiUrl = "https://backend-wpof.onrender.com/api/blogs?populate=*";
-  const { loading, error, data } = useFetch(apiUrl);
-  console.log(data)
+  // const apiUrl = "https://backend-wpof.onrender.com/api/blogs?populate=*";
+  // const { loading, error, data } = useFetch(apiUrl);
+  // console.log(data)
  
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  // if (loading) {
+  //   return <p>Loading...</p>;
+  // }
 
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
+  // if (error) {
+  //   return <p>Error: {error.message}</p>;
+  // }
 
   return (
     <AnimatePresence mode="wait">
@@ -80,10 +85,10 @@ export default function App() {
         <Route path="/" element={<AppLayout />} />
         <Route path="/gallerypage" element={<GalleryPage />} />
         <Route path="/blogpage" element={<BlogPage 
-        blogs={data ? data : ""}
+        // blogs={data ? data : ""}
          />} />
         <Route path="/blog/:id" element={<BlogContent
-         blogs={data ? data : ""}
+        //  blogs={data ? data : ""}
           />} />
       </Routes>
     </AnimatePresence>

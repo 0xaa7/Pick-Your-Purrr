@@ -41,12 +41,8 @@ Driven by my passion for Persian kittens and the desire to make a positive impac
       <motion.div style={{x:xI1}} className="image1" > 
         <img src="./catjump2.png" />
       </motion.div>
-      {/* <motion.div style={{x:xI}} className="image2" > 
-        <img src="./catjump1.png" />
-      </motion.div><motion.div style={{x:xI}} className="image3" > 
-        <img src="./catjump1.png" />
-      </motion.div> */}
-      <video src="TensorPix - TensorPix - istockphoto-473235311-640_adpp_is.mp4" autoPlay loop muted className="video"/>
+     
+      <video src="kittyvideo.mp4" autoPlay loop muted className="video"/>
     </div>
   );
 };

@@ -7,25 +7,25 @@ const testimonialsData = [
     id: 1,
     name: "John Doe",
     description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam aliquet tincidunt dui, id rhoncus felis. Duis lacinia fermentum lectus, at vestibulum nunc fermentum sit amet.",
-    img:"cat333.webp"
+    img:"https://images.pexels.com/photos/1844547/pexels-photo-1844547.jpeg?auto=compress&cs=tinysrgb&w=600"
   },
   {
     id: 2,
     name: "Jane Smith",
     description: "Vestibulum vestibulum tellus nec vestibulum efficitur. Quisque auctor sapien id lacinia convallis. Proin congue elit vitae lacinia fermentum.",
-    img:"cat333.webp"
+    img:"https://images.pexels.com/photos/2117283/pexels-photo-2117283.jpeg?auto=compress&cs=tinysrgb&w=600"
   },
   {
     id: 3,
     name: "Alex",
     description: "Integer nec orci vel mi ullamcorper mattis a ac purus. Phasellus in dolor eget purus finibus cursus. In hac habitasse platea dictumst.",
-    img:"cat333.webp"
+    img:"https://images.pexels.com/photos/2287252/pexels-photo-2287252.jpeg?auto=compress&cs=tinysrgb&w=600"
   },
   {
     id: 4,
-    name: "Ason",
+    name: "sammy",
     description: "Integer nec orci vel mi ullamcorper mattis a ac purus. Phasellus in dolor eget purus finibus cursus. In hac habitasse platea dictumst.",
-    img:"cat333.webp"
+    img:"https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
   },
   {
     id: 5,
@@ -33,24 +33,7 @@ const testimonialsData = [
     description: "Integer nec orci vel mi ullamcorper mattis a ac purus. Phasellus in dolor eget purus finibus cursus. In hac habitasse platea dictumst.",
     img:"cat333.webp"
   },
-  {
-    id: 6,
-    name: "John",
-    description: "Integer nec orci vel mi ullamcorper mattis a ac purus. Phasellus in dolor eget purus finibus cursus. In hac habitasse platea dictumst.",
-    img:"cat333.webp"
-  },
-  {
-    id: 7,
-    name: "Sam",
-    description: "Integer nec orci vel mi ullamcorper mattis a ac purus. Phasellus in dolor eget purus finibus cursus. In hac habitasse platea dictumst.",
-    img:"cat333.webp"
-  },
-  {
-    id: 8,
-    name: "Tom",
-    description: "Integer nec orci vel mi ullamcorper mattis a ac purus. Phasellus in dolor eget purus finibus cursus. In hac habitasse platea dictumst.",
-    img:"cat333.webp"
-  },
+ 
 ];
 
 const Testimonials = () => {
@@ -102,8 +85,8 @@ const Testimonials = () => {
         </motion.div>
       ))}
       <div className="navigation">
-        <button onClick={handlePrev} disabled={currentIndex === 0}>Previous</button>
-        <button onClick={handleNext} disabled={currentIndex === testimonialsData.length - 1}>Next</button>
+        <button onClick={handlePrev} disabled={currentIndex === 0}>PREV</button>
+        <button onClick={handleNext} disabled={currentIndex === testimonialsData.length - 1}>NEXT</button>
       </div>
     </div>
   );

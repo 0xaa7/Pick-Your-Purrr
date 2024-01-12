@@ -22,11 +22,15 @@
   left: 0;
   right: 0;
   top: calc(30% + 100px); 
+  
 
   @include mobile {
     top: calc(40% + 100px);
+   
   }
 }
+
+
 
 .wave {
   background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 88.7'%3E%3Cpath d='M800 56.9c-155.5 0-204.9-50-405.5-49.9-200 0-250 49.9-394.5 49.9v31.8h800v-.2-31.6z' fill='%23003F7C'/%3E%3C/svg%3E");
@@ -170,6 +174,7 @@
 
     button {
       color: #4b2086;
+      font-weight: bold;
       padding: 10px 20px;
       width: 100px;
       border-radius: 10px;

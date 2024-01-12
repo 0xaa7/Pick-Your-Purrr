@@ -15,12 +15,12 @@ const VideoCard = ({ data }) => {
     style={{
                   scale: scale1,
                   opacity: opacity1}} 
-    className="video-card">
-              <div className="card">
+    className="video-card"  >
+              <div className="card" ref={ref} >
 
               <video src={data.video}  />      
               </div>
-              <div className="content" ref={ref}>
+              <div className="content" >
                 <h1>{data.name}</h1>
                 <p>{data.desc}</p>
               </div>

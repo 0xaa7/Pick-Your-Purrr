@@ -5,7 +5,7 @@ import Contact from "./components/contact/Contact";
 import Cursor from "./components/cursor/Cursor";
 import Hero from "./components/hero/Hero";
 import Navbar from "./components/navbar/Navbar";
-import Parallax from "./components/parallax/Parallax";
+import OurStory from "./components/Story/OurStory"
 import GalleryPage from "./components/Gallery/GalleryPage/GalleryPage";
 import Blog from "./components/Blog/Blog";
 import BlogPage from "./pages/BlogPage/BlogPage";
@@ -30,7 +30,8 @@ function AppLayout() {
       </section>
     
       <section id="Our-Story">
-        <Parallax />
+        <OurStory />
+          
       </section>
       <section id="Gallery">
         <GalleryScroll />

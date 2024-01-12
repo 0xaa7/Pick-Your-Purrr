@@ -5,7 +5,7 @@ const videos = [
   {
     id: 1,
     name: "persian",
-    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum ducimus pariatur tempora minima distinctio ea porro adipisci ut quo enim.",
+    desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum ducimus pariatur tempora minima distinctio ea porro adipisci ut quo ",
     video: "kittyvideo.mp4"
   },
   {
@@ -20,7 +20,7 @@ const videos = [
     desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum ducimus pariatur tempora minima distinctio ea porro adipisci ut quo enim.",
     video: "kittyvideo.mp4"
   },
-  // Add more video objects as needed
+  
 ];
 
 const Video = () => {

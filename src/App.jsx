@@ -11,11 +11,9 @@ import Blog from "./components/Blog/Blog";
 import BlogPage from "./pages/BlogPage/BlogPage";
 import useFetch from "./hooks/useFetch";
 import BlogContent from "./pages/BlogContent/BlogContent";
-
 import { AnimatePresence } from "framer-motion";
 import { Outlet } from 'react-router-dom';
 import Steps from "./components/steps/Steps";
-
 import Testimonials from "./components/Testimonials/Testimonials";
 import Video from "./components/video/Video";
 
@@ -31,7 +29,7 @@ function AppLayout() {
     
       <section id="Our-Story">
         <OurStory />
-          
+           
       </section>
       <section id="Gallery">
         <GalleryScroll />
@@ -41,16 +39,12 @@ function AppLayout() {
         <Video />
       </section>
 
-      
-      <section id="blog">
+      <section id="Blog">
         <Blog />
       </section> 
       
-      
         <Steps />
       
-    
-    
       <section id="testimonials"> 
         <Testimonials />
       </section>

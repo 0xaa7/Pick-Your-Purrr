@@ -12,13 +12,12 @@ const VideoCard = ({ data }) => {
   const opacity1 = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
   return (
     <motion.div key={data.id}
-    style={{
-                  scale: scale1,
-                  opacity: opacity1}} 
-    className="video-card"  >
+    style={{ scale: scale1,
+              opacity: opacity1}} 
+    className="video-card" >
               <div className="card" ref={ref} >
 
-              <video src={data.video}  />      
+              <video src={data.video} autoPlay loop muted  />      
               </div>
               <div className="content" >
                 <h1>{data.name}</h1>

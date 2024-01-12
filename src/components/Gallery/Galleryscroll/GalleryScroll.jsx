@@ -1,4 +1,4 @@
-// 'use client';
+
 
 import { useEffect, useRef } from "react";
 import "./galleryscroll.scss"
@@ -20,6 +20,12 @@ const images = [
   "cat10.jpeg",
   "cat11.jpeg",
   "cat12.jpeg",
+  "cat13.jpeg",
+  "cat14.jpeg",
+  "cat15.jpeg",
+  "cat16.jpeg",
+  "cat20.jpeg",
+  "cat22.jpeg",
   
 ]
 
@@ -53,10 +59,10 @@ requestAnimationFrame(raf)
     <div className="gallery-scroll" >
       <div className="top-space"></div>
       <div ref={container} className="gallery">
-        <Column images={[images[0],images[1],images[2]]} y={y} />
-        <Column images={[images[3],images[4],images[5]]} y={y2} />
-        <Column images={[images[6],images[7],images[8]]} y={y3} />
-        <Column className="col" images={[images[9],images[10],images[11]]} y={y4} />
+        <Column images={[images[0],images[1],images[2],images[3],images[6]]} y={y} />
+        <Column images={[images[4],images[5],images[6],images[7],images[12]]} y={y2} />
+        <Column images={[images[6],images[7],images[8],images[2],images[13]]} y={y3} />
+        <Column className="col" images={[images[9],images[10],images[14],images[15],images[17],]} y={y4} />
         <span>
           <Link to="/gallerypage">
             <button>Gallery</button>

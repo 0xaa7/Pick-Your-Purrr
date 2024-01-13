@@ -1,5 +1,5 @@
 
-import  { useState, useEffect } from "react";
+import  { useState } from "react";
 import { motion } from "framer-motion";
 import "./sidebar.scss";
 import Links from "./links/Links";
@@ -27,9 +27,9 @@ const Sidebar = () => {
     },
   };
 
-  useEffect(() => {
-    setOpen(false);
-  }, []);
+  // useEffect(() => {
+  //   setOpen(false);
+  // }, []);
 
   return (
     <motion.div

@@ -11,8 +11,8 @@ const VideoCard = ({ data }) => {
  
   return (
     <motion.div key={data.id} style={{ scale: scale1, opacity: opacity1 }} className="video-card">
-      <div className="card" ref={ref}>
-        <video src={data.video} autoPlay loop muted />
+      <div className="card" >
+        <video src={data.video} autoPlay loop muted ref={ref} />
       </div>
       <div className="content">
         <h1>{data.name}</h1>

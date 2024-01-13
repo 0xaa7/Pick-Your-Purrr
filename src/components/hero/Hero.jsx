@@ -86,7 +86,7 @@ const Hero = () => {
     
 
        <div className="imageContainer"  >
-        <motion.img  src="kitty2.png" variants={imageVariants} initial="initial" animate="animate" />
+        <motion.img fetchpriority="high" src="kitty2.png" variants={imageVariants} initial="initial" animate="animate" />
       </div>
     </div>
   )

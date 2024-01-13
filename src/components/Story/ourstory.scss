@@ -63,7 +63,10 @@ position: relative;
       p {
         font-size: clamp(12px, 4vw, 20px);
         line-height: clamp(16px, 4vw, 40px);
-    
+        
+       
+        
+          
         @include mobile {
     
           font-size: clamp(6px, 4vw, 12px);

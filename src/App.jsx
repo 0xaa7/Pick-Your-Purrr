@@ -50,7 +50,7 @@ function AppLayout() {
         <Testimonials />
       </section>
 
-      <section>
+      <section id="faq">
         <Faq />
       </section>
 

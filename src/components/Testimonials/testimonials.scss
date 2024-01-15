@@ -72,7 +72,7 @@
   position: relative;
   overflow: hidden;
   display: flex;
-  height: 110vh;
+  height: 100vh;
   justify-content: center;
   align-items: center;
   gap: 60px;
@@ -89,7 +89,7 @@
 
   .testimonials-card {
     width: 600px;
-    height: 100vh;
+    height: 60vh;
     position: relative;
     transform-style: preserve-3d;
     transition: transform 0.5s;
@@ -98,7 +98,7 @@
       display: flex;
       max-width: 600px;
       width: 100%;
-      height: 100%;
+      
     }
 
     .card-content {
@@ -185,9 +185,7 @@
       backdrop-filter: blur(15px);
       cursor: pointer;
 
-      @include mobile {
-        background-color: #ef3cf5;
-      }
+      
     }
   }
 }

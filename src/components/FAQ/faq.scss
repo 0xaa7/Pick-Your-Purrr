@@ -33,9 +33,9 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        
         h1{
-          font-size: 80px;
-          
+          font-size: 80px;       
         }
       }
   
@@ -53,8 +53,6 @@
         align-items: center;
         flex-direction: column;
        
-        
-  
         .question {
           cursor: pointer;
           font-size: 20px;
@@ -98,7 +96,6 @@
         width: 60%;
         height: 60%;
       }
-
      }
   }
 
@@ -109,8 +106,6 @@
   justify-content: center;
   align-items: center;
 
- 
-  
   .c1{
     background-color: #4b1794;
     width: 40vw;

@@ -86,17 +86,19 @@
       border-radius: 40px;
       font-size: 40px;
       cursor: pointer;
+      background-color: #E385B5;
+      color: #4b2086;
       
       @include mobile{
         background-color: #4b2086;
-        color: #eb4687;
+        color: #E385B5;
       }
       
     }
 
       button:hover {
         background-color: #4b2086;
-        color: #eb4687;
+        color: #E385B5;
       }
 
       button:active {

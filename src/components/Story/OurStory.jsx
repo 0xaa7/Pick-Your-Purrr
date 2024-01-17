@@ -18,7 +18,7 @@ Driven by my passion for Persian kittens and the desire to make a positive impac
         </div>
       </div>
 
-    <video src="kittyvideo.mp4" autoPlay loop muted className="video"/>
+    {/* <video src="kittyvideo.mp4" autoPlay loop muted className="video"/> */}
     </div>
   );
 };

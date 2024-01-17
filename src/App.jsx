@@ -17,6 +17,7 @@ import Steps from "./components/steps/Steps";
 import Testimonials from "./components/Testimonials/Testimonials";
 import Video from "./components/video/Video";
 import  Faq  from "./components/FAQ/Faq";
+import Text from "./components/textAnimate/text";
 
 
 function AppLayout() {
@@ -52,6 +53,10 @@ function AppLayout() {
 
       <section id="faq">
         <Faq />
+      </section>
+
+      <section>
+        <Text />
       </section>
 
       <section id="contact">

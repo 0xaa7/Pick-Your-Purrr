@@ -92,8 +92,6 @@ const Hero = () => {
      
          <motion.div className="textContainer" variants={textVariants} initial="initial" animate="animate">
  <div className="text"  >
-      <div className="text1"  >
-
       {lines.map((line, i) => (
         <div key={i} className="text-line"  >
           <div className="text-holder"   >
@@ -105,7 +103,7 @@ const Hero = () => {
           </div>
         </div>
       ))}
-      </div>
+     
     </div>
   
             <div className="row">
@@ -122,16 +120,18 @@ const Hero = () => {
             <motion.a href='#' target="_blank" whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }} ><img src='/youtube.png' alt='' /></motion.a>
         </motion.div>
+
+         {/* <motion.div className="scrollContainer" variants={textVariants} initial="initial" animate="animate" >
+        <motion.img src="scroll.png" alt="" variants={textVariants} animate="scrollAnimation"/>
+      </motion.div>  */}
           </div>
 
       </motion.div>
 
-      {/* <motion.div className="scrollContainer" variants={textVariants} initial="initial" animate="animate" >
-        <motion.img src="scroll1.png" alt="" variants={textVariants} animate="scrollAnimation"/>
-      </motion.div> */}
+    
 
       
-        {/* <motion.div className="sliderText" variants={sliderVariants} initial="initial" animate="animate" >meow!! meow!! purrr.. purrr...</motion.div>  */}
+         <motion.div className="sliderText" variants={sliderVariants} initial="initial" animate="animate" >meow!! meow!! purrr.. purrr...</motion.div> 
     
 
        <div className="imageContainer"  >

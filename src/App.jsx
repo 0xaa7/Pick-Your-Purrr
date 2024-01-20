@@ -20,6 +20,7 @@ import  Faq  from "./components/FAQ/Faq";
 
 
 
+
 function AppLayout() {
   return (
     <>
@@ -59,6 +60,7 @@ function AppLayout() {
       <section id="contact">
         <Contact /> 
       </section>
+
 
       <main>
         <Outlet />  

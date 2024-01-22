@@ -21,6 +21,8 @@ import  Faq  from "./components/FAQ/Faq";
 
 
 
+
+
 function AppLayout() {
   return (
     <>
@@ -61,6 +63,9 @@ function AppLayout() {
         <Contact /> 
       </section>
 
+{/* <section>
+  <Test />
+</section> */}
 
       <main>
         <Outlet />  

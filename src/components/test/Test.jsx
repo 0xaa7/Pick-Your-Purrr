@@ -5,7 +5,7 @@ const Test = () => {
 const words = "Hello"
 
   return (
-    <div className='container'>
+    <div className='container12'>
  <motion.div
   className="test"
   animate={{ x: 0 }}
@@ -15,7 +15,7 @@ const words = "Hello"
 >
   {/* Multiple child elements here */}
 </motion.div>
-          <div className='wrapper'>  
+          <div className='wrapper12'>  
             {words.split('').map((letter, index) => (
           <motion.h1
             key={index}

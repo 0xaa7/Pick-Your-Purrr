@@ -2,6 +2,8 @@ import { motion } from 'framer-motion';
 import './test.scss'
 
 const Test = () => {
+const words = "Hello"
+
   return (
     <div className='container'>
  <motion.div
@@ -14,9 +16,17 @@ const Test = () => {
   {/* Multiple child elements here */}
 </motion.div>
           <div className='wrapper'>  
-            <h1>
-              Hello
-            </h1>
+            {words.split('').map((letter, index) => (
+          <motion.h1
+            key={index}
+            initial={{ opacity: 0, y: '20px' }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2, ease: 'easeOut', delay: index * 0.1 }} // Stagger delay
+            style={{ display: 'inline-block' }}
+          >
+            {letter}
+          </motion.h1>
+        ))}
           </div>
 
     </div>

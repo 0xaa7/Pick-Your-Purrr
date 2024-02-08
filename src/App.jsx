@@ -17,6 +17,7 @@ import Steps from "./components/steps/Steps";
 import Testimonials from "./components/Testimonials/Testimonials";
 import Video from "./components/video/Video";
 import  Faq  from "./components/FAQ/Faq";
+import Test from "./components/test/Test";
 
 
 
@@ -27,6 +28,9 @@ function AppLayout() {
   return (
     <>
     <Cursor />
+<section>
+  <Test />
+</section>
       <section id="Home">
         <Navbar />
         <Hero />
@@ -63,9 +67,6 @@ function AppLayout() {
         <Contact /> 
       </section>
 
-{/* <section>
-  <Test />
-</section> */}
 
       <main>
         <Outlet />  

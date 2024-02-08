@@ -89,6 +89,8 @@ const Hero = () => {
   ];
   return (
     <div className="hero" ref={ref}>
+    <div className="wrapper">
+
      
          <motion.div className="textContainer" variants={textVariants} initial="initial" animate="animate">
  <div className="text"  >
@@ -137,6 +139,9 @@ const Hero = () => {
        <div className="imageContainer"  >
         <motion.img fetchpriority="high" src="kitty2.png" variants={imageVariants} initial="initial" animate="animate" />
       </div>
+
+      </div>
+
     </div>
   )
 }

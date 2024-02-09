@@ -28,9 +28,9 @@ function AppLayout() {
   return (
     <>
     <Cursor />
-<section>
+{/* <section>
   <Test />
-</section>
+</section> */}
       <section id="Home">
         <Navbar />
         <Hero />

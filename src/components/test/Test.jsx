@@ -9,13 +9,35 @@ const words = "Hello"
  <motion.div
   className="test"
   animate={{ x: 0 }}
-  transition={{ duration: 5, delay:2, ease: 'easeOut' }}
+  transition={{ duration: 3, ease: 'easeOut' }}
   initial={{ x: -1300 }}
   staggerChildren={0.2} // Adjust stagger value as needed
 >
-  {/* Multiple child elements here */}
+
 </motion.div>
-          <div className='wrapper12'>  
+<motion.div
+  className="test1"
+  animate={{ x: 0 }}
+  transition={{ duration: 4, ease: 'easeOut' }}
+  initial={{ x: -1500 }}
+  staggerChildren={0.2} // Adjust stagger value as needed
+>
+ 
+</motion.div>
+<motion.div
+  className="test2"
+  animate={{ x:0}}
+  transition={{ duration: 5, ease: 'easeOut' }}
+  initial={{ x:-1500}}
+  staggerChildren={0.2} // Adjust stagger value as needed
+>
+ 
+</motion.div>
+
+ 
+          <motion.div className='wrapper12'
+          
+          >  
             {words.split('').map((letter, index) => (
           <motion.h1
             key={index}
@@ -27,7 +49,7 @@ const words = "Hello"
             {letter}
           </motion.h1>
         ))}
-          </div>
+          </motion.div>
 
     </div>
          

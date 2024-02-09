@@ -4,7 +4,7 @@
   height: 100vh;
   width: 100%;
   display: flex;
-  background-image: url("background2.png");
+  // background-image: url("background2.png");
   background-size: cover;
   background-repeat: no-repeat;
   justify-content: space-around;
@@ -23,16 +23,43 @@
       }
 
       .wrapper{
+        width: 100%;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: row;
+        padding: 100px;
+        gap: 25px;
+
+        @include mobile{
+          flex-direction: column;
+          gap: 0;
+          padding: 0px;
+        }
+
+          .test {
+            width: 100%;
+            height: 100vh;
+            position: absolute;
+            background-color: aqua;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            z-index: -1;
+            clip-path: circle(100% at 30% 50%);
+  
+  
+          }
 
         .textContainer {
-          width: 50%;
+          width: 100%;
           display: flex;   
           justify-content: center;
           align-items: center;
+          padding: 50px;
+          gap: 16px;
+          position: relative;
+          
 
     @include mobile {
         display: flex;
@@ -45,22 +72,42 @@
         margin-top: 110px;
         height: fit-content;
         flex-direction: column;
+        padding: 0;
+      }
+      .circle{
+         
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            background-color: #4b1794;
+            position: absolute;
+            left: -30px;
+            width: 60%; 
+            height: 40%;
+            clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%);
+
       }
    
       .text {
-        width: 50%;
+        width: 60%;
         height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
+       
+       
+
 
         @include mobile{
-          height: 0vh;
-          margin-top: 100px;
+          height: 40vh;
+         
           justify-content:center;
           align-items: center;
-          z-index: -1; 
+          clip-path: circle(70% at 50% 50%);
+          background-color: #4b1794;
+        
         }
 
         .text-line {
@@ -77,7 +124,7 @@
             margin: 0px;
             justify-content: center;
             align-items: center;
-            padding-left: 40px;
+            
           }
         }
       }
@@ -92,6 +139,8 @@
       justify-content: center;
       align-items: center;
       font-size: clamp(100px, 8vh, 400px);
+      line-height: clamp(800px, 8vh, 1200px);
+      z-index: 3;
   
 
       @include mobile {
@@ -110,7 +159,8 @@
       color: #4b1794;
       font-weight: 800;
       line-height: 30px;
-      font-size: 30px;
+    font-size: clamp(30px, 4vh, 90px);
+    line-height: clamp(30px, 4vh, 90px);
       cursor: pointer;
       
 
@@ -149,8 +199,9 @@
 .row{
   display: flex;
   flex-direction: column;
-  width: 50%;
-  padding-left: 40px;
+  width: 40%;
+  position: relative;
+  
   
    @include mobile{
     flex-direction: column;
@@ -159,20 +210,7 @@
    }
 }
 
-  .scrollContainer {
-    width: 60px;
-    height: 60px;
-    margin-top: 12px;
-    
-   
-    img{
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      color: #4b1794;
 
-    }
-  }
 
 
   .sliderText {
@@ -187,8 +225,8 @@
 
     @include mobile {
       position: absolute;
-        bottom:0;
-        font-size: 40vh;
+      bottom:0;
+      font-size: 40vh;
       }
   }
 
@@ -198,13 +236,13 @@
    justify-content: center;
    align-items: center;
    max-width: 50%;
-   position: relative;
+   
    z-index: 1;
 
 
     img {
      
-      width: 600px;
+      width: 400px;
       height: 100vh;
       object-fit: contain;
       
@@ -213,11 +251,12 @@
 
       @include mobile {
           display: flex;
-          width: 400px;
+          width: 300px;
           height: 50vh;
           align-items: center;
           justify-content: center;
-          object-fit: contain;      
+          object-fit: contain; 
+          padding-right: 60px;   
         }
     }
   }

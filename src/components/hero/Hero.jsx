@@ -2,28 +2,6 @@ import { useRef } from "react"
 import "./hero.scss"
 import { motion, useScroll, useTransform } from "framer-motion"
 
-const textVariants = {
-  initial:{
-    x:-500,
-    opacity:0,
-  },
-  animate:{
-    x:0,
-    opacity:1,
-    transition:{
-      duration:1,
-      staggerChildren: 0.1,
-    }
-  },
-  scrollAnimation:{
-    opacity:0,
-    y:10,
-    transition:{
-      duration:2,
-      repeat:Infinity,
-    }
-  }
-}
 
 
 const imageVariants = {
@@ -65,6 +43,8 @@ const Hero = () => {
 
   const scale1 = useTransform(scrollYProgress, [0, 1], [1, 0.5]);
   
+  const circle = useTransform(scrollYProgress, [0, 1], [1, 200]);
+  
 
  const lines = [
     [
@@ -90,15 +70,29 @@ const Hero = () => {
   return (
     <div className="hero" ref={ref}>
     <div className="wrapper">
+       <motion.div
+  className="test"
+  animate={{ x: 0 }}
+  transition={{ duration: 3, ease: 'easeOut' }}
+  initial={{ x: -1300 }}
+  
+></motion.div>
 
      
-         <motion.div className="textContainer" variants={textVariants} initial="initial" animate="animate">
- <div className="text"  >
+         <motion.div className="textContainer" >
+          <motion.div className="circle" style={{ y: circle}} />
+ <motion.div className="text" >
       {lines.map((line, i) => (
         <div key={i} className="text-line"  >
           <div className="text-holder"   >
             {line.map(({ char, style }, j) => (
-              <motion.span key={j} style={{ y: style.y, x: style.x, scale: scale1}}>
+              <motion.span key={j} style={{ y: style.y, x: style.x, scale: scale1, display: 'inline-block'}}
+               initial={{ opacity: 0, y: '20px' }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 2, ease: 'easeOut', delay: i * 0.1 }}
+             
+              
+              >
                 <h1>{char}</h1>
               </motion.span>
             ))}
@@ -106,26 +100,23 @@ const Hero = () => {
         </div>
       ))}
      
-    </div>
+    </motion.div>
   
             <div className="row">
 
-            <motion.p variants={textVariants}>
+            <p >
               Welcome to my world, where the love for pets meet the art of matchmaking
-            </motion.p>
+            </p>
 
-      <motion.div className="social" variants={textVariants} initial="initial" animate="animate"  >
+      <div className="social" >
           <motion.a href='facebook.com' target="_blank" whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }} ><img src='/facebook.png' alt='' /></motion.a>
             <motion.a href='#' target="_blank" whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }} ><img src='/insta.png' alt='' /></motion.a>
             <motion.a href='#' target="_blank" whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.95 }} ><img src='/youtube.png' alt='' /></motion.a>
-        </motion.div>
+        </div>
 
-         {/* <motion.div className="scrollContainer" variants={textVariants} initial="initial" animate="animate" >
-        <motion.img src="scroll.png" alt="" variants={textVariants} animate="scrollAnimation"/>
-      </motion.div>  */}
           </div>
 
       </motion.div>

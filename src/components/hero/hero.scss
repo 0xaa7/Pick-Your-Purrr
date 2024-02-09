@@ -56,7 +56,7 @@
               width: 80%;
               height: 100vh;
               position: absolute;
-              background-color: rgb(232, 83, 245);
+              background-color: #E385B5;
               justify-content: center;
               align-items: center;
               display: flex;
@@ -67,7 +67,7 @@
                 @include mobile {
                     top: 0;
                     clip-path: circle(55% at 12% 50%);
-                    height: 80vh;
+                    height: 60vh;
                 
                   }
                 

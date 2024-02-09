@@ -69,18 +69,36 @@ const Hero = () => {
   ];
   return (
     <div className="hero" ref={ref}>
-    <div className="wrapper">
+       <motion.div className="circle" style={{ y: circle}} />
        <motion.div
   className="test"
   animate={{ x: 0 }}
   transition={{ duration: 3, ease: 'easeOut' }}
   initial={{ x: -1300 }}
   
-></motion.div>
+/>
+<motion.div
+  className="test1"
+  animate={{ x: 0 }}
+  transition={{ duration: 4, ease: 'easeOut' }}
+  initial={{ x: -1500 }}
+  staggerChildren={0.2} // Adjust stagger value as needed
+/>
+ 
+<motion.div
+  className="test2"
+  animate={{ x:0}}
+  transition={{ duration: 5, ease: 'easeOut' }}
+  initial={{ x:-1500}}
+  staggerChildren={0.2} // Adjust stagger value as needed
+/>
+
+    <div className="wrapper">
+       
 
      
          <motion.div className="textContainer" >
-          <motion.div className="circle" style={{ y: circle}} />
+         
  <motion.div className="text" >
       {lines.map((line, i) => (
         <div key={i} className="text-line"  >
@@ -102,7 +120,7 @@ const Hero = () => {
      
     </motion.div>
   
-            <div className="row">
+           <div className="row">
 
             <p >
               Welcome to my world, where the love for pets meet the art of matchmaking

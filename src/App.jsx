@@ -28,10 +28,10 @@ function AppLayout() {
   return (
     <>
     <Cursor />
-{/* <section>
+<section>
   <Test />
-</section> */}
-      <section id="Home">
+</section>
+      {/* <section id="Home">
         <Navbar />
         <Hero />
       </section>
@@ -65,7 +65,7 @@ function AppLayout() {
 
       <section id="contact">
         <Contact /> 
-      </section>
+      </section> */}
 
 
       <main>

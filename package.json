@@ -14,21 +14,14 @@
     "@studio-freight/lenis": "^1.0.29",
     "axios": "^1.6.2",
     "framer-motion": "^10.16.4",
-    "gsap": "^3.12.4",
     "imagesloaded": "^5.0.0",
-    "intersection-observer": "^0.12.2",
     "lodash": "^4.17.21",
-    "masonry-layout": "^4.2.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-intersection-observer": "^9.5.3",
     "react-masonry-css": "^1.0.16",
     "react-router-dom": "^6.21.1",
-    "react-slick": "^0.29.0",
     "react-svg": "^16.1.32",
-    "sass": "^1.68.0",
-    "slick-carousel": "^1.8.1",
-    "swiper": "^11.0.5"
+    "sass": "^1.68.0"
   },
   "devDependencies": {
     "@types/react": "18.2.15",

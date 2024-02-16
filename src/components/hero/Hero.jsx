@@ -72,9 +72,7 @@ const Hero = () => {
        <motion.div className="circle" style={{ y: circle}} />
        <motion.div
   className="test"
-  animate={{ x: 0 }}
-  transition={{ duration: 3, ease: 'easeOut' }}
-  initial={{ x: -1300 }}
+  
   
 />
 <motion.div

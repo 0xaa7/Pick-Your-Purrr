@@ -28,14 +28,14 @@ function AppLayout() {
   return (
     <>
     <Cursor />
-<section>
+<section >
   <Test />
 </section>
-      {/* <section id="Home">
+     {/*
+      <section id="Home">
         <Navbar />
         <Hero />
       </section>
-    
       <section id="Our-Story">
         <OurStory />
            

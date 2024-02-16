@@ -23,7 +23,7 @@ const Card = ({ card, style, onDirectionLock, onDragEnd, animate }) => (
     onDragEnd={onDragEnd}
     animate={animate}
     style={{ ...style, background: card.background }}
-    transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.8 }} // Adjust the duration and ease
+    transition={{ ease: [0.16, 1, 0.3, 1], duration: 0.8 }} 
     whileTap={{ scale: 0.85 }}
   >
     <p>{card.text}</p>
@@ -65,7 +65,7 @@ const InfiniteCards = () => {
       newCards.unshift(lastCard);
       return newCards;
     });
-  }, 500); // Adjust this value to match the duration of the animation
+  }, 200); // Adjust this value to match the duration of the animation
 };
 
 
@@ -86,6 +86,7 @@ const InfiniteCards = () => {
           <Card
             card={card}
             key={index}
+            index={index}
             style={{ x, y, zIndex: index }}
             onDirectionLock={(axis) => onDirectionLock(axis)}
             onDragEnd={(e, info) => onDragEnd(info)}
@@ -93,8 +94,8 @@ const InfiniteCards = () => {
               x: dragStart.animation.x,
               y: dragStart.animation.y,
               transition: {
-                duration:3, // Adjust the duration as needed (higher values for slower motion)
-                ease: [0.36, 1, 0.3, 1], // Custom easing function, you can experiment with different values
+                duration:3,
+                ease: [0.36, 1, 0.3, 1]
               },
             }}
           />
@@ -104,6 +105,7 @@ const InfiniteCards = () => {
           <Card
             card={card}
             key={index}
+            
             style={{
               zIndex: index,
                scale,

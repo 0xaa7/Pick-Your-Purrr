@@ -27,7 +27,7 @@ import Test from "./components/test/Test";
 function AppLayout() {
   return (
     <>
-    <Cursor />
+    {/* <Cursor /> */}
 <section >
   <Test />
 </section>

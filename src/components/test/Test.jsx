@@ -1,16 +1,21 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { motion, useMotionValue, useTransform, useMotionTemplate } from 'framer-motion';
+import { FaArrowAltCircleRight } from "react-icons/fa";
+import { FaArrowAltCircleLeft } from "react-icons/fa";
+
+
 import './test.scss';
 
 const colors = ['#FFBE0B', '#FB5607', '#FF006E', '#8338EC', '#3A86FF'];
 
-const Card = ({ card, style, onDirectionLock, onDragEnd, animate }) => (
+const Card = ({ card, style, onDirectionLock, onDragStart, onDragEnd, animate }) => (
   <motion.div
     className="card"
     drag
     dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
     dragDirectionLock
     onDirectionLock={onDirectionLock}
+    onDragStart={onDragStart}
     onDragEnd={onDragEnd}
     animate={animate}
     style={{ ...style, background: card.background }}
@@ -33,15 +38,33 @@ const InfiniteCards = () => {
     animation: { x: 0, y: 0 },
   });
 
-  const x = useMotionValue(-10);
-  const y = useMotionValue(-10);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
 
-  const scale = useTransform(dragStart.axis === 'x' ? x : y, [-175, 0, 175], [1, 0.8, 1]);
+  const scale = useTransform(dragStart.axis === 'x' ? x : y, [-175, 0, 175], [1, 0.5, 1]);
   const shadowBlur = useTransform(dragStart.axis === 'x' ? x : y, [-175, 0, 175], [0, 25, 0]);
   const shadowOpacity = useTransform(dragStart.axis === 'x' ? x : y, [-175, 0, 175], [0, 0.2, 0]);
   const boxShadow = useMotionTemplate`0 ${shadowBlur}px 25px -5px rgba(0, 0, 0, ${shadowOpacity})`;
 
+  const [isTopCardDragging, setIsTopCardDragging] = useState(false);
+
   const onDirectionLock = (axis) => setDragStart({ ...dragStart, axis: axis });
+
+  const onDragStart = () => {
+    setIsTopCardDragging(true);
+  };
+
+  const onDragEnd = (info) => {
+    setIsTopCardDragging(false);
+
+    if (dragStart.axis === 'x' && isTopCardDragging) {
+      if (info.offset.x >= 100) animateCardSwipe(nextAnimations[0]);
+      else if (info.offset.x <= -100) animateCardSwipe(previousAnimations[0]);
+    } else if (dragStart.axis === 'y' && isTopCardDragging) {
+      if (info.offset.y >= 100) animateCardSwipe(nextAnimations[0]);
+      else if (info.offset.y <= -100) animateCardSwipe(previousAnimations[0]);
+    }
+  };
 
   const animateCardSwipe = async (animation) => {
     setDragStart({ ...dragStart, animation });
@@ -58,32 +81,18 @@ const InfiniteCards = () => {
       newCards.unshift(lastCard);
       return newCards;
     });
-
-  
   };
 
-  const nextAnimations = [{ x: 2000, y: 400 }];
+  const nextAnimations = [{ x: 1000, y: 0 }];
 
-  const previousAnimations = [{ x: -2000, y: 400 }];
-
-  const onDragEnd = (info) => {
-    if (dragStart.axis === 'x') {
-      if (info.offset.x >= 100) animateCardSwipe(nextAnimations[0]);
-      else if (info.offset.x <= -100) animateCardSwipe(previousAnimations[0]);
-    } else {
-      if (info.offset.y >= 100) animateCardSwipe(nextAnimations[0]);
-      else if (info.offset.y <= -100) animateCardSwipe(previousAnimations[0]);
-    }
-  };
+  const previousAnimations = [{ x: -1000, y: 200 }];
 
   const handleNext = () => {
     animateCardSwipe(nextAnimations[0]);
-   
   };
 
   const handlePrevious = () => {
     animateCardSwipe(previousAnimations[0]);
-    
   };
 
   const renderCards = () => {
@@ -95,13 +104,13 @@ const InfiniteCards = () => {
             key={index}
             style={{ x, y, zIndex: index }}
             onDirectionLock={(axis) => onDirectionLock(axis)}
+            onDragStart={() => onDragStart()}
             onDragEnd={(e, info) => onDragEnd(info)}
             animate={{
               x: dragStart.animation.x,
               y: dragStart.animation.y,
               transition: {
-                duration: 1,
-              
+                duration: 0.8,
               },
             }}
           />
@@ -116,7 +125,7 @@ const InfiniteCards = () => {
               boxShadow,
               zIndex: index,
               transition: {
-                duration: 1,
+                duration: 0.8,
               },
             }}
           />
@@ -128,8 +137,11 @@ const InfiniteCards = () => {
     <div className="infinite-cards">
       {renderCards()}
       <div className="navigation-buttons">
-        <button onClick={handlePrevious}>Previous</button>
-        <button onClick={handleNext}>Next</button>
+        <FaArrowAltCircleLeft onClick={handlePrevious} size={80}  />
+        <FaArrowAltCircleRight onClick={handleNext} size={80}  />
+
+
+     
       </div>
     </div>
   );

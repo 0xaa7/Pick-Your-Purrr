@@ -1,7 +1,7 @@
 import React from 'react';
-import './test.scss';
 import { useState } from 'react';
 import { motion, useMotionValue, useTransform, useMotionTemplate } from 'framer-motion';
+import './test.scss';
 
 const colors = ['#FFBE0B', '#FB5607', '#FF006E', '#8338EC', '#3A86FF'];
 
@@ -15,7 +15,7 @@ const Card = ({ card, style, onDirectionLock, onDragEnd, animate }) => (
     onDragEnd={onDragEnd}
     animate={animate}
     style={{ ...style, background: card.background }}
-    transition={{ ease: [0.6, 0.05, -0.01, 0.9] }}
+    transition={{ ease: [0.6, 0.05, -0.01, 0.9], duration: 0.5 }}
     whileTap={{ scale: 0.90 }}
   >
     <p>{card.text}</p>
@@ -44,44 +44,61 @@ const InfiniteCards = () => {
 
   const onDirectionLock = (axis) => setDragStart({ ...dragStart, axis: axis });
 
-  const animateCardSwipe = (animation) => {
+  const animateCardSwipe = async (animation) => {
     setDragStart({ ...dragStart, animation });
 
-    setTimeout(() => {
-      setDragStart({ axis: null, animation: { x: 0, y: 0 } });
-      x.set(0);
-      y.set(0);
-      setCards((prevCards) => {
-        const newCards = [...prevCards];
-        const lastCard = newCards.pop();
-        newCards.unshift(lastCard);
-        return newCards;
-      });
-    }, 500); // Adjust the timeout duration for slower or faster animations
+    // Wrap the animation logic in a Promise
+    const animationPromise = new Promise((resolve) => {
+      setTimeout(() => {
+        setDragStart({ axis: null, animation: { x: 0, y: 0 } });
+        x.set(0);
+        y.set(0);
+        setCards((prevCards) => {
+          const newCards = [...prevCards];
+          const lastCard = newCards.pop();
+          newCards.unshift(lastCard);
+          return newCards;
+        });
+
+        // Set scale after animation completion
+        scale.set(0.8);
+
+        resolve(); // Resolve the Promise once the animation is complete
+      },400);
+    });
+
+    // Wait for the animationPromise to complete before moving on
+    await animationPromise;
   };
 
-  const getRandomAnimation = () => {
-    const randomX = Math.random() * 3000 - 2000;
-    const randomY = Math.random() * 3000 - 2000;
-    return { x: randomX, y: randomY };
-  };
+  const nextAnimations = [
+    { x: 1000, y: 200 },
+    { x: -1000, y: 600 },
+    { x: 2000, y: 1000 },
+    { x: -1000, y: 600 },
+  ];
 
-  const onDragEnd = (info) => {
+  const previousAnimations = [
+    { x: -800, y: 800 },
+    { x: 800, y: -900 },
+  ];
+
+  const onDragEnd = async (info) => {
     if (dragStart.axis === 'x') {
-      if (info.offset.x >= 100) animateCardSwipe(getRandomAnimation());
-      else if (info.offset.x <= -100) animateCardSwipe(getRandomAnimation());
+      if (info.offset.x >= 100) await animateCardSwipe(nextAnimations[0]);
+      else if (info.offset.x <= -100) await animateCardSwipe(previousAnimations[0]);
     } else {
-      if (info.offset.y >= 100) animateCardSwipe(getRandomAnimation());
-      else if (info.offset.y <= -100) animateCardSwipe(getRandomAnimation());
+      if (info.offset.y >= 100) await animateCardSwipe(nextAnimations[0]);
+      else if (info.offset.y <= -100) await animateCardSwipe(previousAnimations[0]);
     }
   };
 
-  const handleNext = () => {
-    animateCardSwipe(getRandomAnimation());
+  const handleNext = async () => {
+    await animateCardSwipe(nextAnimations[0]);
   };
 
-  const handlePrevious = () => {
-    animateCardSwipe(getRandomAnimation());
+  const handlePrevious = async () => {
+    await animateCardSwipe(previousAnimations[0]);
   };
 
   const renderCards = () => {
@@ -98,7 +115,8 @@ const InfiniteCards = () => {
               x: dragStart.animation.x,
               y: dragStart.animation.y,
               transition: {
-                duration: 2,
+                duration: 1,
+                onComplete: () => scale.set(0.8),
               },
             }}
           />
@@ -113,7 +131,7 @@ const InfiniteCards = () => {
               boxShadow,
               zIndex: index,
               transition: {
-                duration: 2, 
+                duration: 1,
               },
             }}
           />

@@ -1,4 +1,3 @@
-import React from 'react';
 import { useState } from 'react';
 import { motion, useMotionValue, useTransform, useMotionTemplate } from 'framer-motion';
 import './test.scss';
@@ -15,7 +14,7 @@ const Card = ({ card, style, onDirectionLock, onDragEnd, animate }) => (
     onDragEnd={onDragEnd}
     animate={animate}
     style={{ ...style, background: card.background }}
-    transition={{ ease: [0.6, 0.05, -0.01, 0.9], duration: 0.5 }}
+    transition={{ ease: [0.6, 0.05, -0.01, 0.9] }}
     whileTap={{ scale: 0.90 }}
   >
     <p>{card.text}</p>
@@ -47,58 +46,44 @@ const InfiniteCards = () => {
   const animateCardSwipe = async (animation) => {
     setDragStart({ ...dragStart, animation });
 
-    // Wrap the animation logic in a Promise
-    const animationPromise = new Promise((resolve) => {
-      setTimeout(() => {
-        setDragStart({ axis: null, animation: { x: 0, y: 0 } });
-        x.set(0);
-        y.set(0);
-        setCards((prevCards) => {
-          const newCards = [...prevCards];
-          const lastCard = newCards.pop();
-          newCards.unshift(lastCard);
-          return newCards;
-        });
+    await new Promise((resolve) => setTimeout(resolve, 300));
 
-        // Set scale after animation completion
-        scale.set(0.8);
+    setDragStart({ axis: null, animation: { x: 0, y: 0 } });
+    x.set(0);
+    y.set(0);
 
-        resolve(); // Resolve the Promise once the animation is complete
-      },400);
+    setCards((prevCards) => {
+      const newCards = [...prevCards];
+      const lastCard = newCards.pop();
+      newCards.unshift(lastCard);
+      return newCards;
     });
 
-    // Wait for the animationPromise to complete before moving on
-    await animationPromise;
+  
   };
 
-  const nextAnimations = [
-    { x: 1000, y: 200 },
-    { x: -1000, y: 600 },
-    { x: 2000, y: 1000 },
-    { x: -1000, y: 600 },
-  ];
+  const nextAnimations = [{ x: 2000, y: 400 }];
 
-  const previousAnimations = [
-    { x: -800, y: 800 },
-    { x: 800, y: -900 },
-  ];
+  const previousAnimations = [{ x: -2000, y: 400 }];
 
-  const onDragEnd = async (info) => {
+  const onDragEnd = (info) => {
     if (dragStart.axis === 'x') {
-      if (info.offset.x >= 100) await animateCardSwipe(nextAnimations[0]);
-      else if (info.offset.x <= -100) await animateCardSwipe(previousAnimations[0]);
+      if (info.offset.x >= 100) animateCardSwipe(nextAnimations[0]);
+      else if (info.offset.x <= -100) animateCardSwipe(previousAnimations[0]);
     } else {
-      if (info.offset.y >= 100) await animateCardSwipe(nextAnimations[0]);
-      else if (info.offset.y <= -100) await animateCardSwipe(previousAnimations[0]);
+      if (info.offset.y >= 100) animateCardSwipe(nextAnimations[0]);
+      else if (info.offset.y <= -100) animateCardSwipe(previousAnimations[0]);
     }
   };
 
-  const handleNext = async () => {
-    await animateCardSwipe(nextAnimations[0]);
+  const handleNext = () => {
+    animateCardSwipe(nextAnimations[0]);
+   
   };
 
-  const handlePrevious = async () => {
-    await animateCardSwipe(previousAnimations[0]);
+  const handlePrevious = () => {
+    animateCardSwipe(previousAnimations[0]);
+    
   };
 
   const renderCards = () => {
@@ -116,7 +101,7 @@ const InfiniteCards = () => {
               y: dragStart.animation.y,
               transition: {
                 duration: 1,
-                onComplete: () => scale.set(0.8),
+              
               },
             }}
           />

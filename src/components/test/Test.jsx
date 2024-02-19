@@ -1,150 +1,86 @@
-import React, { useState } from 'react';
-import { motion, useMotionValue, useTransform, useMotionTemplate } from 'framer-motion';
-import { FaArrowAltCircleRight } from "react-icons/fa";
-import { FaArrowAltCircleLeft } from "react-icons/fa";
-
-
+import  { useState } from 'react'
+import { useSprings, animated, to as interpolate } from '@react-spring/web'
+import { useDrag } from 'react-use-gesture'
 import './test.scss';
 
-const colors = ['#FFBE0B', '#FB5607', '#FF006E', '#8338EC', '#3A86FF'];
+const cards = [
+'/Images/cat1.jpeg',
+'/Images/cat2.jpeg',
+'/Images/cat3.jpeg',
+'/Images/cat4.jpeg',
+'/Images/cat5.jpeg',
+'/Images/cat6.jpeg',
+'/Images/cat7.jpeg',
 
-const Card = ({ card, style, onDirectionLock, onDragStart, onDragEnd, animate }) => (
-  <motion.div
-    className="card"
-    drag
-    dragConstraints={{ left: 0, right: 0, top: 0, bottom: 0 }}
-    dragDirectionLock
-    onDirectionLock={onDirectionLock}
-    onDragStart={onDragStart}
-    onDragEnd={onDragEnd}
-    animate={animate}
-    style={{ ...style, background: card.background }}
-    transition={{ ease: [0.6, 0.05, -0.01, 0.9] }}
-    whileTap={{ scale: 0.90 }}
-  >
-    <p>{card.text}</p>
-  </motion.div>
-);
+]
 
-const InfiniteCards = () => {
-  const [cards, setCards] = useState([
-    { text: 'Up or down', background: colors[0] },
-    { text: 'Left or right', background: colors[1] },
-    { text: 'Swipe me!', background: colors[2] },
-  ]);
+// These two are just helpers, they curate spring data, values that are later being interpolated into css
+const to = (i) => ({
+  x: 0,
+  y: i * -4,
+  scale: 1,
+  rot: -10 + Math.random() * 20,
+  delay: i * 100,
+})
+const from = (_i) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 })
+// This is being used down there in the view, it interpolates rotation and scale into a css transform
+const trans = (r, s) =>
+  `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
 
-  const [dragStart, setDragStart] = useState({
-    axis: null,
-    animation: { x: 0, y: 0 },
-  });
-
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-
-  const scale = useTransform(dragStart.axis === 'x' ? x : y, [-175, 0, 175], [1, 0.5, 1]);
-  const shadowBlur = useTransform(dragStart.axis === 'x' ? x : y, [-175, 0, 175], [0, 25, 0]);
-  const shadowOpacity = useTransform(dragStart.axis === 'x' ? x : y, [-175, 0, 175], [0, 0.2, 0]);
-  const boxShadow = useMotionTemplate`0 ${shadowBlur}px 25px -5px rgba(0, 0, 0, ${shadowOpacity})`;
-
-  const [isTopCardDragging, setIsTopCardDragging] = useState(false);
-
-  const onDirectionLock = (axis) => setDragStart({ ...dragStart, axis: axis });
-
-  const onDragStart = () => {
-    setIsTopCardDragging(true);
-  };
-
-  const onDragEnd = (info) => {
-    setIsTopCardDragging(false);
-
-    if (dragStart.axis === 'x' && isTopCardDragging) {
-      if (info.offset.x >= 100) animateCardSwipe(nextAnimations[0]);
-      else if (info.offset.x <= -100) animateCardSwipe(previousAnimations[0]);
-    } else if (dragStart.axis === 'y' && isTopCardDragging) {
-      if (info.offset.y >= 100) animateCardSwipe(nextAnimations[0]);
-      else if (info.offset.y <= -100) animateCardSwipe(previousAnimations[0]);
-    }
-  };
-
-  const animateCardSwipe = async (animation) => {
-    setDragStart({ ...dragStart, animation });
-
-    await new Promise((resolve) => setTimeout(resolve, 300));
-
-    setDragStart({ axis: null, animation: { x: 0, y: 0 } });
-    x.set(0);
-    y.set(0);
-
-    setCards((prevCards) => {
-      const newCards = [...prevCards];
-      const lastCard = newCards.pop();
-      newCards.unshift(lastCard);
-      return newCards;
-    });
-  };
-
-  const nextAnimations = [{ x: 1000, y: 0 }];
-
-  const previousAnimations = [{ x: -1000, y: 200 }];
-
-  const handleNext = () => {
-    animateCardSwipe(nextAnimations[0]);
-  };
-
-  const handlePrevious = () => {
-    animateCardSwipe(previousAnimations[0]);
-  };
-
-  const renderCards = () => {
-    return cards.map((card, index) => {
-      if (index === cards.length - 1) {
-        return (
-          <Card
-            card={card}
-            key={index}
-            style={{ x, y, zIndex: index }}
-            onDirectionLock={(axis) => onDirectionLock(axis)}
-            onDragStart={() => onDragStart()}
-            onDragEnd={(e, info) => onDragEnd(info)}
-            animate={{
-              x: dragStart.animation.x,
-              y: dragStart.animation.y,
-              transition: {
-                duration: 0.8,
-              },
-            }}
-          />
-        );
-      } else
-        return (
-          <Card
-            card={card}
-            key={index}
-            style={{
-              scale,
-              boxShadow,
-              zIndex: index,
-              transition: {
-                duration: 0.8,
-              },
-            }}
-          />
-        );
-    });
-  };
-
+function Deck() {
+  const [gone] = useState(() => new Set()) // The set flags all the cards that are flicked out
+  const [props, api] = useSprings(cards.length, i => ({
+    ...to(i),
+    from: from(i),
+  })) // Create a bunch of springs using the helpers above
+  // Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction and velocity
+  const bind = useDrag(({ args: [index], down, movement: [mx], direction: [xDir], velocity }) => {
+    const trigger = velocity > 0.2 // If you flick hard enough it should trigger the card to fly out
+    const dir = xDir < 0 ? -1 : 1 // Direction should either point left or right
+    if (!down && trigger) gone.add(index) // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
+    api.start(i => {
+      if (index !== i) return // We're only interested in changing spring-data for the current spring
+      const isGone = gone.has(index)
+      const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0 // When a card is gone it flys out left or right, otherwise goes back to zero
+      const rot = mx / 100 + (isGone ? dir * 10 * velocity : 0) // How much the card tilts, flicking it harder makes it rotate faster
+      const scale = down ? 1.1 : 1 // Active cards lift up a bit
+      return {
+        x,
+        rot,
+        scale,
+        delay: undefined,
+        config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
+      }
+    })
+    if (!down && gone.size === cards.length)
+      setTimeout(() => {
+        gone.clear()
+        api.start(i => to(i))
+      }, 600)
+  })
+  // Now we're just mapping the animated values to our view, that's it. Btw, this component only renders once. :-)
   return (
-    <div className="infinite-cards">
-      {renderCards()}
-      <div className="navigation-buttons">
-        <FaArrowAltCircleLeft onClick={handlePrevious} size={80}  />
-        <FaArrowAltCircleRight onClick={handleNext} size={80}  />
+    <>
+      {props.map(({ x, y, rot, scale }, i) => (
+        <animated.div className="deck" key={i} style={{ x, y }}>
+          {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
+          <animated.div
+            {...bind(i)}
+            style={{
+              transform: interpolate([rot, scale], trans),
+              backgroundImage: `url(${cards[i]})`,
+            }}
+          />
+        </animated.div>
+      ))}
+    </>
+  )
+}
 
-
-     
-      </div>
+export default function Test() {
+  return (
+    <div className="container">
+      <Deck />
     </div>
-  );
-};
-
-export default InfiniteCards;
+  )
+}

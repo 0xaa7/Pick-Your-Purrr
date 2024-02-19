@@ -1,53 +1,36 @@
-.infinite-cards {
-  width: 100%;
-  height: 100vh;
+
+
+.container {
+  background: lightblue;
+  cursor: url('https://uploads.codesandbox.io/uploads/user/b3e56831-8b98-4fee-b941-0e27f39883ab/Ad1_-cursor.png') 39 39,
+    auto;
   display: flex;
- justify-content: center;
- align-items: center;
- overflow: hidden;
- background-color: aquamarine;
- position: relative;
+  align-items: center;
+  height: 100vh;
+  justify-content: center;
+}
 
- .navigation-buttons {
+.deck {
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  margin: auto;
-  z-index: 5;
+  width: 300px;
+  height: 200px;
+  will-change: transform;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  touch-action: none;
+}
 
- }
- .text-reveal{
-  position: absolute;
-    left: 0;
-    right: 0;
-   
-    margin: auto;
-    z-index: 5;
- }
-
-  .card {
-    position: absolute;
-    left: 0px;
-    right: 0px;
-    margin: auto;
-    height: 300px;
-    width: 260px;
-    border-radius: 15px;
-    color: #fff;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    cursor: grab;
-    overflow: hidden;
-
-   
-
-    p {
-      text-align: center;
-      font-size: 28px;
-      font-weight: 700;
-    }
-  }
+.deck>div {
+  background-color: white;
+  background-size: auto 85%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 45vh;
+  max-width: 150px;
+  height: 85vh;
+  max-height: 285px;
+  will-change: transform;
+  border-radius: 10px;
+  box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
 }

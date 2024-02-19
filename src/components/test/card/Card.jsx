@@ -1,88 +1,47 @@
-import React, { useRef, useEffect, useState } from "react";
-import { motion, useMotionValue, useAnimation } from "framer-motion";
+import React, { useState } from 'react';
+import { motion, useMotionValue, useTransform } from 'framer-motion';
+import './card.scss';
 
-
-
-
-export const Card = ({ children, onVote, ...props }) => {
-  // motion stuff
-  const cardElem = useRef(null);
-
+const TinderCard = ({ profile, onSwipeRight }) => {
   const x = useMotionValue(0);
-  const controls = useAnimation();
+  const rotate = useTransform(x, [-200, 0, 200], [-30, 0, 30]);
+  const [isDragging, setIsDragging] = useState(false);
 
-  const [constrained, setConstrained] = useState(true);
+  const handleDragEnd = (event, info) => {
+    setIsDragging(false);
 
-  const [direction, setDirection] = useState();
-
-  const [velocity, setVelocity] = useState();
-
-  const getVote = (childNode, parentNode) => {
-    const childRect = childNode.getBoundingClientRect();
-    const parentRect = parentNode.getBoundingClientRect();
-    let result =
-      parentRect.left >= childRect.right
-        ? false
-        : parentRect.right <= childRect.left
-        ? true
-        : undefined;
-    return result;
-  };
-
-  // determine direction of swipe based on velocity
-  const getDirection = () => {
-    return velocity >= 1 ? "right" : velocity <= -1 ? "left" : undefined;
-  };
-
-  const getTrajectory = () => {
-    setVelocity(x.getVelocity());
-    setDirection(getDirection());
-  };
-
-  const flyAway = (min) => {
-    const flyAwayDistance = (direction) => {
-      const parentWidth = cardElem.current.parentNode.getBoundingClientRect()
-        .width;
-      const childWidth = cardElem.current.getBoundingClientRect().width;
-      return direction === "left"
-        ? -parentWidth / 2 - childWidth / 2
-        : parentWidth / 2 + childWidth / 2;
-    };
-
-    if (direction && Math.abs(velocity) > min) {
-      setConstrained(false);
-      controls.start({
-        x: flyAwayDistance(direction)
-      });
+    // Check if the card was dragged enough to consider it swiped
+    if (Math.abs(info.point.x) > 150) {
+      // Animate the card off the screen on swipe right
+      x.set(info.point.x > 0 ? 300 : -300);
+      onSwipeRight();
+    } else {
+      // Reset the card position if not swiped enough
+      x.set(0);
     }
   };
 
-  useEffect(() => {
-    const unsubscribeX = x.onChange(() => {
-      if (cardElem.current) {
-        const childNode = cardElem.current;
-        const parentNode = cardElem.current.parentNode;
-        const result = getVote(childNode, parentNode);
-        result !== undefined && onVote(result);
-      }
-    });
-
-    return () => unsubscribeX();
-  });
-
   return (
     <motion.div
-      animate={controls}
-      dragConstraints={constrained && { left: 0, right: 0, top: 0, bottom: 0 }}
-      dragElastic={1}
-      ref={cardElem}
-      style={{ x }}
-      onDrag={getTrajectory}
-      onDragEnd={() => flyAway(500)}
-      whileTap={{ scale: 1.1 }}
-      {...props}
+      className={`tinder-card ${isDragging ? 'dragging' : ''}`}
+      drag="x"
+      dragConstraints={{ left: 0, right: 0 }}
+      dragElastic={0.2}
+      onDragStart={() => setIsDragging(true)}
+      onDragEnd={handleDragEnd}
+      style={{ x, rotate }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.4 }}
     >
-      {children}
+      <div className="profile-image">
+        <img src={profile.image} alt="Profile" />
+      </div>
+      <div className="profile-info">
+        <h2>{profile.name}</h2>
+        <p>{profile.bio}</p>
+      </div>
     </motion.div>
   );
 };
+
+export default TinderCard;

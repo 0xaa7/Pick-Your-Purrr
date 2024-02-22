@@ -20,18 +20,14 @@ import  Faq  from "./components/FAQ/Faq";
 import Test from "./components/test/Test";
 
 
-
-
-
-
 function AppLayout() {
   return (
     <>
-    {/* <Cursor /> */}
+    <Cursor />
 <section >
   <Test />
 </section>
-     {/*
+{/*      
       <section id="Home">
         <Navbar />
         <Hero />
@@ -65,7 +61,7 @@ function AppLayout() {
 
       <section id="contact">
         <Contact /> 
-      </section> */}
+      </section>  */}
 
 
       <main>

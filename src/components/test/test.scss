@@ -24,6 +24,7 @@
 .buttons {
 position: absolute;
 z-index: 3;
+bottom: 0;
 }
 
 .deck>div {
@@ -42,6 +43,10 @@ z-index: 3;
 
 .bottons{
   position: absolute;
-  z-index: 5;
+  z-index: 1;
   left: 20px;
+}
+.cards22{
+  position: relative;
+  right: 30%;
 }

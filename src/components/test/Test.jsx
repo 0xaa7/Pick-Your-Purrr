@@ -1,16 +1,15 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { useSprings, animated, to as interpolate } from '@react-spring/web';
 import { useDrag } from 'react-use-gesture';
 import './test.scss';
 
 const cards = [
-  '/Images/cat1.jpeg',
-  '/Images/cat2.jpeg',
-  '/Images/cat3.jpeg',
-  '/Images/cat4.jpeg',
-  '/Images/cat5.jpeg',
-  '/Images/cat6.jpeg',
-  '/Images/cat7.jpeg',
+  { image: '/Images/cat1.jpeg', text: 'Card 1 Text' },
+  { image: '/Images/cat2.jpeg', text: 'Card 2 Text' },
+  { image: '/Images/cat3.jpeg', text: 'Card 3 Text' },
+  { image: '/Images/cat4.jpeg', text: 'Card 4 Text' },
+  { image: '/Images/cat5.jpeg', text: 'Card 5 Text' },
+  { image: '/Images/cat6.jpeg', text: 'Card 6 Text' },
 ];
 
 const to = (i) => ({
@@ -21,48 +20,54 @@ const to = (i) => ({
   delay: i * 100,
 });
 
-const from = (_i) => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
+const from = () => ({ x: 0, rot: 0, scale: 1.5, y: -1000 });
 
 const trans = (r, s) =>
   `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`;
 
 function Deck() {
-  const [gone] = useState(() => new Set()); // The set flags all the cards that are flicked out
-  const [index, setIndex] = useState(0); // Track the current index of the card
+  const [gone] = useState(() => new Set());
+  const [index, setIndex] = useState(0);
+  const [animationInProgress, setAnimationInProgress] = useState(false);
+  const [currentCard, setCurrentCard] = useState(cards[index]);
 
   const [props, api] = useSprings(cards.length, (i) => ({
     ...to(i),
     from: from(i),
-  })); // Create a bunch of springs using the helpers above
+  }));
 
-  // Function to handle next card with fixed values
   const goNext = () => {
-    setIndex((prevIndex) => (prevIndex + 1) % cards.length);
-      animateCard(false, 1, -300, 0.2); // Animate card towards left with fixed values
+    if (!animationInProgress) {
+      setIndex((prevIndex) => (prevIndex + 1) % cards.length);
+      const nextCard = cards[(index + 1) % cards.length];
+      setCurrentCard(nextCard);
+      animateCard(false, 1, -300, 0.2, nextCard);
+    }
   };
 
-  // Function to handle previous card with fixed values
   const goPrevious = () => {
-    setIndex((prevIndex) => (prevIndex - 1 + cards.length) % cards.length);
-    animateCard(false, -1, 300, 0.2); // Animate card towards right with fixed values
+    if (!animationInProgress) {
+      setIndex((prevIndex) => (prevIndex - 1 + cards.length) % cards.length);
+      const previousCard = cards[(index - 1 + cards.length) % cards.length];
+      setCurrentCard(previousCard);
+      animateCard(false, -1, 300, 0.2, previousCard);
+    }
   };
 
-  // Animate card function
-  const animateCard = (down,direction, mx, velocity) => {
+  const animateCard = (down, direction, mx, velocity, currentCard) => {
     const currentIndex = index;
     const xDir = direction;
-
-    // const trigger = true; // Trigger the card to fly out
     const dir = xDir < 0 ? -1 : 1;
 
     gone.add(currentIndex);
+    setAnimationInProgress(true);
 
-     api.start((i) => {
-      if (currentIndex !== i) return; // We're only interested in changing spring-data for the current spring
+    api.start((i) => {
+      if (currentIndex !== i) return;
       const isGone = gone.has(currentIndex);
-      const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0; // When a card is gone it flies out left or right, otherwise goes back to zero
-      const rot = mx / 100 + (isGone ? dir * 10 * velocity : 0); // How much the card tilts, flicking it harder makes it rotate faster
-      const scale = down ? 1.1 : 1; // Active cards lift up a bit
+      const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0;
+      const rot = mx / 100 + (isGone ? dir * 10 * velocity : 0);
+      const scale = down ? 1.1 : 1;
       return {
         x,
         rot,
@@ -71,57 +76,74 @@ function Deck() {
         config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
       };
     });
+
     if (!down && gone.size === cards.length) {
       setTimeout(() => {
         gone.clear();
+        setIndex(0);
+        setCurrentCard(cards[0]);
         api.start((i) => to(i));
-      }, 0);
+        setAnimationInProgress(false);
+      }, 600);
+    } else {
+      setAnimationInProgress(false);
     }
   };
 
-  // Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction, and velocity
   const bind = useDrag(({ args: [currentIndex], down, movement: [mx], direction: [xDir], velocity }) => {
-    const trigger = velocity > 0.2; // If you flick hard enough it should trigger the card to fly out
+  const trigger = velocity > 0.2;
+  const dir = xDir < 0 ? -1 : 1;
 
-    const dir = xDir < 0 ? -1 : 1; // Direction should either point left or right
-    if (!down && trigger) gone.add(currentIndex); // If button/finger's up and trigger velocity is reached, we flag the card ready to fly out
-    api.start((i) => {
-      if (currentIndex !== i) return; // We're only interested in changing spring-data for the current spring
-      const isGone = gone.has(currentIndex);
-      const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0; // When a card is gone it flies out left or right, otherwise goes back to zero
-      const rot = mx / 100 + (isGone ? dir * 10 * velocity : 0); // How much the card tilts, flicking it harder makes it rotate faster
-      const scale = down ? 1.1 : 1; // Active cards lift up a bit
-      return {
-        x,
-        rot,
-        scale,
-        delay: undefined,
-        config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
-      };
-    });
-    if (!down && gone.size === cards.length) {
-      setTimeout(() => {
-        gone.clear();
-        api.start((i) => to(i));
-      }, 600);
+  if (!down && trigger) gone.add(currentIndex);
+
+  api.start((i) => {
+    if (currentIndex !== i) return;
+    const isGone = gone.has(currentIndex);
+    const x = isGone ? (200 + window.innerWidth) * dir : down ? mx : 0;
+    const rot = mx / 100 + (isGone ? dir * 10 * velocity : 0);
+    const scale = down ? 1.1 : 1;
+
+    if (!down) {
+      // Update the current card text when the drag is complete
+      setCurrentCard(cards[(i + index) % cards.length]);
     }
+
+    return {
+      x,
+      rot,
+      scale,
+      delay: undefined,
+      config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 },
+    };
   });
 
-  // Now we're just mapping the animated values to our view
+  if (!down && gone.size === cards.length) {
+    setTimeout(() => {
+      gone.clear();
+      api.start((i) => to(i));
+    }, 600);
+  }
+});
+
+
   return (
     <>
       {props.map(({ x, y, rot, scale }, i) => (
         <animated.div className="deck" key={i} style={{ x, y }}>
-          {/* This is the card itself, we're binding our gesture to it (and inject its index so we know which is which) */}
           <animated.div
             {...bind(i)}
             style={{
               transform: interpolate([rot, scale], trans),
-              backgroundImage: `url(${cards[(i + index) % cards.length]})`,
+              backgroundImage: `url(${cards[(i + index) % cards.length].image})`,
             }}
           />
         </animated.div>
       ))}
+      <div className='cards22'>
+        <div className="card-text">
+          {currentCard.text}
+        </div>
+      </div>
       <div className='buttons'> 
         <button onClick={goPrevious}>Previous</button>
         <button onClick={goNext}>Next</button>

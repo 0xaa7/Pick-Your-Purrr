@@ -1,21 +1,22 @@
 import {
-  BsFillArrowLeftSquareFill,
-  BsFillArrowRightSquareFill
-} from "react-icons/bs";
+  IoIosArrowDroprightCircle,
+  IoIosArrowDropleftCircle 
+} from "react-icons/io";
 
 export function Rig({ onClickLeft, onClickRight }) {
   return (
     <div className="rig_container">
-      <BsFillArrowLeftSquareFill
+      <IoIosArrowDropleftCircle
         color={"ivory"}
-        size={48}
+        size={108}
         onClick={onClickLeft}
       />
-      <BsFillArrowRightSquareFill
+      <IoIosArrowDroprightCircle
         color={"ivory"}
-        size={48}
+        size={108}
         onClick={onClickRight}
       />
     </div>
   );
 }
+

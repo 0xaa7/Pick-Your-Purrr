@@ -1,4 +1,4 @@
-import "./styles.scss";
+import './styles.scss'
 import CardDeck from "./CardDeck";
 import { Rig } from "./Rig";
 import { useState } from "react";
@@ -24,6 +24,9 @@ export default function StoryPage() {
 
   return (
     <div className="storypage">
+      <h1>
+        Our Story
+      </h1>
       <CardDeck
         leftPressed={leftPressed}
         rightPressed={rightPressed}

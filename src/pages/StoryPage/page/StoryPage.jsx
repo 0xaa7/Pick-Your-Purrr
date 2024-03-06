@@ -1,6 +1,6 @@
-import './styles.scss'
-import CardDeck from "./CardDeck";
-import { Rig } from "./Rig";
+import './storypage.scss';
+import CardDeck from "../CardDeck";
+import { Rig } from "../Rig";
 import { useState } from "react";
 
 export default function StoryPage() {

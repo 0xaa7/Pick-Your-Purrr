@@ -17,8 +17,8 @@ import Steps from "./components/steps/Steps";
 import Testimonials from "./components/Testimonials/Testimonials";
 import Video from "./components/video/Video";
 import  Faq  from "./components/FAQ/Faq";
+import StoryPage from "./pages/StoryPage/page/StoryPage";
 
-import StoryPage from "./pages/StoryPage/StoryPage";
 
 
 
@@ -29,8 +29,7 @@ function AppLayout() {
   return (
     <>
     <Cursor />
-
-     
+         
       <section id="Home">
         <Navbar />
         <Hero />

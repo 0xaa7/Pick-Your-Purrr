@@ -29,7 +29,7 @@ function AppLayout() {
   return (
     <>
     <Cursor />
-         
+
       <section id="Home">
         <Navbar />
         <Hero />

@@ -7,11 +7,13 @@ export default function StoryPage() {
   const [leftPressed, setLeftPressed] = useState(null);
   const [rightPressed, setRightPressed] = useState(null);
   const cardOptions = [
-    "“We’re solving a problem.” ",
-    "“We’re customer-centric.”",
-    "“We’re agile and adaptable.” ",
-    "“We value innovation.”",
-    "“We believe in sustainable growth.”"
+    "When was \"Pick your Purrr\" created?",
+    "Why was \"Pick your Purrr\" created?",
+    "What milestones has \"Pick your Purrr\" achieved?",
+    "Does “Pick your Purrr” sell Persian kittens only?",
+    "Why should you choose \"Pick your Purrr\"?",
+    "How do we ensure quality and affordability?",
+     "What's our mission/future aspration?"
   ];
 
   const onLeftPressed = () => {

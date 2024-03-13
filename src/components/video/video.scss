@@ -7,6 +7,7 @@ justify-content: center;
 align-items: center;
 
 
+
 .wrapper{
   display: flex;
   max-width: 100%;
@@ -15,6 +16,7 @@ align-items: center;
   justify-content: center;
   align-items: center;
   gap: 20px;
+  background-color: #E385B5;
 
   @include mobile{
     

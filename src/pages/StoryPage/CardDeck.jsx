@@ -82,7 +82,7 @@ const CardDeck = ({ cards, leftPressed, rightPressed }) => {
     if (rightPressed !== null) {
       lastActionRef.current = "left";
       gsap.to(cardRefs.current[0], {
-        x: -250,
+        x: 250,
         scale: 1.1,
         duration: 0.25,
         onComplete: function () {

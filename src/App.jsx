@@ -5,7 +5,6 @@ import Contact from "./components/contact/Contact";
 import Cursor from "./components/cursor/Cursor";
 import Hero from "./components/hero/Hero";
 import Navbar from "./components/navbar/Navbar";
-import OurStory from "./components/Story/OurStory"
 import GalleryPage from "./components/Gallery/GalleryPage/GalleryPage";
 import Blog from "./components/Blog/Blog";
 import BlogPage from "./pages/BlogPage/BlogPage";
@@ -34,10 +33,11 @@ function AppLayout() {
         <Navbar />
         <Hero />
       </section>
-      <section id="Our-Story">
+
+      <section id="Our-Story">     
         <StoryPage />
-           
       </section>
+      
       <section id="Gallery">
         <GalleryScroll />
       </section>
@@ -51,7 +51,6 @@ function AppLayout() {
       </section> 
       
         <Steps />
-      
       <section id="testimonials"> 
         <Testimonials />
       </section>

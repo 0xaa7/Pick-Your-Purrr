@@ -7,12 +7,12 @@ export function Rig({ onClickLeft, onClickRight }) {
   return (
     <div className="rig_container">
       <IoIosArrowDropleftCircle
-        color={"ivory"}
+        color={"#4b1794"}
         size={108}
         onClick={onClickLeft}
       />
       <IoIosArrowDroprightCircle
-        color={"ivory"}
+        color={"#4b1794"}
         size={108}
         onClick={onClickRight}
       />

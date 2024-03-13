@@ -7,25 +7,25 @@ import BlogCard from './BlogCard/BlogCard';
 const blogs = [
   {
     id: 1,
-    img: "catblog1.jpeg",
+    img: "/Images/cat1.jpeg",
     blogTitle: "Best Cat Food",
     blogDesc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus saepe, ipsam nihil dicta facilis qui quos excepturi illum commodi rem."
   },
   {
     id: 2,
-    img: "catblog1.jpeg",
+    img: "/Images/cat2.jpeg",
     blogTitle: "Best Cat Food",
     blogDesc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus saepe, ipsam nihil dicta facilis qui quos excepturi illum commodi rem."
   },
   {
     id: 3,
-    img: "catblog1.jpeg",
+    img: "/Images/cat3.jpeg",
     blogTitle: "Best Cat Food",
     blogDesc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus saepe, ipsam nihil dicta facilis qui quos excepturi illum commodi rem."
   },
   {
     id: 4,
-    img: "catblog1.jpeg",
+    img: "/Images/cat4.jpeg",
     blogTitle: "Best Cat Food",
     blogDesc: "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Delectus saepe, ipsam nihil dicta facilis qui quos excepturi illum commodi rem."
   },

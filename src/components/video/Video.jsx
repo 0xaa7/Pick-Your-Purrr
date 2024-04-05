@@ -4,19 +4,19 @@ import VideoCard from "./videoCard/VideoCard";
 const videos = [
   {
     id: 1,
-    name: "persian",
+    name: "Ragdoll",
     desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum ducimus pariatur tempora minima distinctio ea porro adipisci ut quo ",
     video: "kittyvideo.mp4"
   },
   {
     id: 2,
-    name: "persian",
+    name: "Persian",
     desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum ducimus pariatur tempora minima distinctio ea porro adipisci ut quo enim.",
     video: "kittyvideo.mp4"
   },
   {
     id: 3,
-    name: "persian",
+    name: "Bengal",
     desc: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Harum ducimus pariatur tempora minima distinctio ea porro adipisci ut quo enim.",
     video: "kittyvideo.mp4"
   },

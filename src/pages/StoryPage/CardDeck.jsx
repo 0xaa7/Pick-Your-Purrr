@@ -137,8 +137,9 @@ const CardDeck = ({ cards, leftPressed, rightPressed }) => {
           ref={(el) => (cardRefs.current[index] = el)}
           style={{ position: "absolute" }}
         >
-          {card}
-        </div>
+         <h3>{card.question}</h3>
+         <p>{card.answer}</p>          
+        </div>   
       ))}
     </div>
   );

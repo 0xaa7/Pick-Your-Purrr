@@ -58,6 +58,7 @@ const cardData = [
         rightPressed={rightPressed}
         cards={cardData}
       />
+      
       <Rig onClickLeft={onLeftPressed} onClickRight={onRightPressed} />
     </div>
   );

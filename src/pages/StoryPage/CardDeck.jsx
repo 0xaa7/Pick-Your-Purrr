@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { Draggable } from "gsap/Draggable";
 
+
+
 gsap.registerPlugin(Draggable);
 
 const CardDeck = ({ cards, leftPressed, rightPressed }) => {
@@ -138,6 +140,17 @@ const CardDeck = ({ cards, leftPressed, rightPressed }) => {
           style={{ position: "absolute" }}
         >
          <h3>{card.question}</h3>
+               
+        </div>   
+      ))}
+
+       {deck.map((card, index) => (
+        <div 
+          className="cardsAnswers"
+          key={index}         
+          style={{ position: "absolute" }}
+        >
+        
          <p>{card.answer}</p>          
         </div>   
       ))}

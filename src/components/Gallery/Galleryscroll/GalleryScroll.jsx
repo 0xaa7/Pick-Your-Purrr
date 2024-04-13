@@ -54,7 +54,6 @@ const GalleryScroll = React.memo(() => {
 
   return (
     <div className="gallery-scroll">
-      <div className="top-space"></div>
       <div ref={container} className="gallery">
         <Column images={[images[0], images[1], images[2], images[3], images[6]]} y={y} />
         <Column images={[images[4], images[5], images[6], images[7], images[12]]} y={y2} />

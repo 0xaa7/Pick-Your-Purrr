@@ -9,7 +9,7 @@ import GalleryPage from "./components/Gallery/GalleryPage/GalleryPage";
 import Blog from "./components/Blog/Blog";
 import BlogPage from "./pages/BlogPage/BlogPage";
 
-import BlogContent from "./pages/BlogContent/BlogContent";
+ import BlogContent from "./pages/BlogContent/BlogContent";
 import { AnimatePresence } from "framer-motion";
 import { Outlet } from 'react-router-dom';
 import Steps from "./components/steps/Steps";
@@ -17,7 +17,19 @@ import Testimonials from "./components/Testimonials/Testimonials";
 import Video from "./components/video/Video";
 import  Faq  from "./components/FAQ/Faq";
 import StoryPage from "./pages/StoryPage/page/StoryPage";
+import Home from "./blogpages/home/Home";
+// import Blog from "./components/Blog/Blog";
 
+// import Blog from "./blogpages/blog/Blog";
+// import AllBlogs from "./blogpages/allBlogs/AllBlogs";
+// import NoPage from "./blogpages/nopage/NoPage";
+// import BlogInfo from "./blogpages/blogInfo/BlogInfo";
+// import AdminLogin from "./blogpages/admin/adminLogin/AdminLogin";
+// import Dashboard from "./blogpages/admin/dashboard/Dashboard";
+// import MyState from "./context/data/MyState"
+// import CreateBlog from "./blogpages/admin/createBlog/CreateBlog";
+import { Toaster } from "react-hot-toast";
+import Test from "./components/Test/Test"
 
 
 
@@ -27,14 +39,14 @@ import StoryPage from "./pages/StoryPage/page/StoryPage";
 function AppLayout() {
   return (
     <>
-    <Cursor />
+    {/* <Cursor /> */}
 
       <section id="Home">
         <Navbar />
         <Hero />
       </section>
 
-      <section id="Our-Story">     
+      <section id="Ourstory">     
         <StoryPage />
       </section>
       
@@ -42,27 +54,31 @@ function AppLayout() {
         <GalleryScroll />
       </section>
 
-      <section id="video">
+      <section id="Video">
         <Video />
       </section>
 
-      <section id="Blog">
+       <section id="Blog">
         <Blog />
-      </section> 
+      </section>  
       
-        <Steps />
-      <section id="testimonials"> 
-        <Testimonials />
+       <Steps />
+      <section id="Testimonials"> 
+        <Testimonials /> 
       </section>
 
-      <section id="faq">
+      <section id="FAQ">
         <Faq />
       </section>
 
 
-      <section id="contact">
+      <section id="Contact us">
         <Contact /> 
-      </section> 
+      </section>  
+
+      <section>
+       <Test />
+      </section>
 
 
       <main>
@@ -78,16 +94,29 @@ export default function App() {
 
   return (
     <AnimatePresence mode="wait">
+      {/* <MyState> */}
+          
+
+
       <Routes key={location.pathname} location={location}>
         <Route path="/" element={<AppLayout />} />
         <Route path="/gallerypage" element={<GalleryPage />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/blog" element={<Blog />} />
+          {/* <Route path="/allblogs" element={<AllBlogs />} />
+          <Route path="/bloginfo/:id" element={<BlogInfo />} />
+          <Route path="/adminlogin" element={<AdminLogin />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/*" element={<NoPage />} /> */}
         <Route path="/blogpage" element={<BlogPage 
        
-         />} />
-        <Route path="/blog/:id" element={<BlogContent
-       
-          />} />
+       />} />
+       <Route path="/blog/:id" element={<BlogContent
+        
+       />} /> 
       </Routes>
+      <Toaster />
+    {/* </MyState> */}
     </AnimatePresence>
   );
 }

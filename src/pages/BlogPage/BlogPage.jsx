@@ -1,7 +1,13 @@
 import { Link } from 'react-router-dom';
 import './blogpage.scss'
 
-const BlogPage = ({ blogs }) => {
+const blogs =[{
+  id:1,
+  blogTitle:"cats"
+  
+}]
+
+const BlogPage = () => {
   return (
     <div className="blog-page">
       <div className="wrapper">

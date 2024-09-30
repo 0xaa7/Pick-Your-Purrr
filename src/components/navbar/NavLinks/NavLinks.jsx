@@ -26,11 +26,11 @@ import { motion } from "framer-motion";
 
 const NavLinks = () => {
   const items = [
-    "Home",
-    "About",
+    "Ourstory",
     "Gallery",
     "Testimonials",
-    "Contact"
+    "FAQ",
+    "Contact us"
   ]
  
   return (

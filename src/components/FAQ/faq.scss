@@ -19,6 +19,7 @@
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      height: 100vh;
       gap: 20px;
       width: 60%;
       padding: 20px;
@@ -110,8 +111,8 @@
 
   .c1{
     background-color: #4b1794;
-    width: 40vw;
-    height: 40vw;
+    width: 35vw;
+    height: 35vw;
      border-radius: 50%;
     display: flex;
     align-items: center;
@@ -125,8 +126,8 @@
     
     .c2{
       background-color: #E385B5;
-        width: 30vw;
-          height: 30vw;
+        width: 25vw;
+          height: 25vw;
       border-radius: 50%;
       display: flex;
         align-items: center;
